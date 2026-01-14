@@ -51,7 +51,7 @@ function App() {
         <Route path={"/lease"} element={<Lease />}/>
         <Route path={"/rent"} element={<Rent cards={cards} isLoading={isLoading} />}/>
         <Route path={"/contact"} element={<Contact />}/>
-        <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/>
+        {/* <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/> */}
         <Route path={"/aboutUser"} element={<AboutUser />}/>
         <Route path={"/features"} element={<Features cards={cards} />}/>
       </Routes>

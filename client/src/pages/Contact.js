@@ -21,17 +21,17 @@ function Contact() {
           {t("aloqa")}
         </h1>
         <div className="aloqa-line" />
-        <a href="tel:+998935755102">
+        <a href="tel:+998909965102">
           <span>
             <FaPhoneAlt />
           </span>{" "}
-          +998(93)-575-51-02
+          +998(90)-996-51-02
         </a>
-        <a href="https://t.me/@anvarjonweb001">
+        <a href="https://t.me/@OLTIN_NISBAT_architecture">
           <span>
             <FaTelegram />
           </span>{" "}
-          anvarjonweb001
+          OLTIN_NISBAT_architecture
         </a>
       </div>
     </div>

@@ -22,6 +22,8 @@
     "i18next": "^24.2.2",
     "input": "^1.0.1",
     "material-ui-popup-state": "^5.3.3",
+    "modules": "^0.4.0",
+    "node": "^25.3.0",
     "node-modules": "^1.0.1",
     "process": "^0.11.10",
     "react": "^19.0.0",

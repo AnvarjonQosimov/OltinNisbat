@@ -1,5 +1,5 @@
 import "../styles/Home.css"
-import ArendaShop from "../images/ArendaShop.png"
+import OltinNisbat from "../images/oltinnisbat.jpg"
 import "../i18n.js"
 import { useTranslation } from "react-i18next"
 
@@ -14,8 +14,8 @@ function Home() {
       <div className="home_right">
         {/* <div className="home_right-animation"> */}
         <div className="circleh"></div>
-        <div className="circleho"></div>
-        <img src={ArendaShop} alt="ArendaShop" />
+        <div className="circleho"></div>      
+        <img src={OltinNisbat} alt="OltinNisbat" />
         {/* </div> */}
       </div>
     </div>
