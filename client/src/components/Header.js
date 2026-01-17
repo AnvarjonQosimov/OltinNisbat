@@ -115,7 +115,7 @@ function Header() {
     <div className="Header">
       <div className="logo">
         <Link to={""}>
-          <img src={OltinNisbat} alt="ArendaShop" />
+          <img src={OltinNisbat} alt="OltinNisbat" />
         </Link>
         <Link to={""}>
           <h2>OltinNisbat</h2>
