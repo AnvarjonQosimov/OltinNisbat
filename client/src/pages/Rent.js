@@ -18,7 +18,7 @@ function Rent(props) {
   const [isClickedHeart, setIsClickedHeart] = useState(true);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
-  const adminEmailMain = "aziz.co@mail.ru";
+  const adminEmailMain = "oltinnisbatarch@gmail.com";
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {

@@ -37,7 +37,7 @@ function Header() {
   const { t, i18n } = useTranslation();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  const adminEmailMain = "aziz.co@mail.ru";
+  const adminEmailMain = "oltinnisbatarch@gmail.com";
   const menuRef = useRef(null);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -118,7 +118,7 @@ function Header() {
           <img src={OltinNisbat} alt="OltinNisbat" />
         </Link>
         <Link to={""}>
-          <h2>OltinNisbat</h2>
+          <h2>Oltin_Nisbat</h2>
         </Link>
       </div>
 
