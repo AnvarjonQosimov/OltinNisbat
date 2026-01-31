@@ -133,6 +133,13 @@ function Header() {
             {t("about")}
           </Link>
         </li>
+
+        <li>
+          <Link className="li" to={"/aboutus"}>
+            {t("aboutus")}
+          </Link>
+        </li>
+
         <li>
           <Link className="li" to={"/rent"}>
             {t("rent")}
@@ -176,6 +183,14 @@ function Header() {
             className="menu-link"
           >
             {t("about")}
+          </NavLink>
+
+          <NavLink
+            to="/aboutus"
+            onClick={() => setBurgerOpen(false)}
+            className="menu-link"
+          >
+            {t("aboutus")}
           </NavLink>
 
           <NavLink

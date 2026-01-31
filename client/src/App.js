@@ -2,7 +2,9 @@ import './App.css';
 import Header from "./components/Header.js"
 import Home from "./pages/Home.js"
 import About from "./pages/About.js"
+import AboutUs from "./pages/AboutUs.js"
 import  Rent from "./pages/Rent.js"
+import  Rent2 from "./pages/Rent2.js"
 import  Lease from "./pages/Lease.js"
 import  Contact from "./pages/Contact.js"
 import  AboutUser from "./pages/AboutUser.js"
@@ -48,8 +50,10 @@ function App() {
       <Routes>
         <Route path={"/"}  element={<Home />}/>
         <Route path={"/about"} element={<About />}/>
+        <Route path={"/aboutus"} element={<AboutUs />}/>
         <Route path={"/lease"} element={<Lease />}/>
         <Route path={"/rent"} element={<Rent cards={cards} isLoading={isLoading} />}/>
+        <Route path={"/rent2"} element={<Rent2 cards={cards} isLoading={isLoading} />}/>
         <Route path={"/contact"} element={<Contact />}/>
         {/* <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/> */}
         <Route path={"/aboutUser"} element={<AboutUser />}/>

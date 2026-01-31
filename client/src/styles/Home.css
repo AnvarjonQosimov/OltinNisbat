@@ -36,7 +36,7 @@
   padding: 0 15px;
 }
 
-.home_right {
+/* .home_right {
   width: 37%;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
   position: relative;
   top: -100px;
   left: 30px;
-}
+} */
 
 /* .home_right-animation{
     display: flex;
@@ -53,7 +53,7 @@
     justify-content: center;
 } */
 
-.home_right img {
+/* .home_right img {
   width: 180px;
   height: 180px;
   border-radius: 50%;
@@ -78,6 +78,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+/* .home_right {
+  width: 37%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  top: -100px;
+  left: 30px;
+} */
+
+.home_right {
+  position: relative;
+  width: 37%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -100px;
+  left: 30px;
+}
+
+.circleh{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: circleh 1.5s alternate infinite;
+}
+
+.circleho{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: circleho 1.5s alternate infinite;
+}
+
+.home-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-link img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  z-index: 10;
 }
 
 @keyframes circleh {
@@ -113,13 +165,21 @@
 @media (max-width: 1300px){
   .home_left h1{
     font-size: 35px;
-    margin-left: -15px;
+    margin-left: 15px;
   }
 
   .home_right{
     margin-left: -20px;
   }
 }
+
+@media (max-width: 1190px){
+  .home_left h1{
+    font-size: 30px;
+    margin-left: -15px;
+  }
+}
+
 
 @media (max-width: 1126px) {
   .home_left h1 {
@@ -140,7 +200,7 @@
   }
 
   .circleho {
-    position: relative;
+    position: absolute;
     animation: circleho 1.5s alternate infinite;
     display: flex;
     align-items: center;
@@ -178,15 +238,30 @@
   }
 }
 
+@media (max-width: 1070px){
+  .home_left h1{
+    font-size: 25px;
+    margin-left: -15px;
+  }
+}
+
 @media(max-width: 950px){
   .home_left h1 {
     font-size: 25px;
   }
 }
 
+@media (max-width: 885px){
+  .home_left h1{
+    font-size: 22px;
+    margin-left: -15px;
+  }
+}
+
 @media(max-width: 800px){
   .home_left h1 {
     font-size: 20px;
+    margin-left:  20px;
   }
 
   .home_right {
@@ -207,7 +282,7 @@
   }
 
   .circleho {
-    position: relative;
+    position: absolute;
     animation: circleho 1.5s alternate infinite;
     display: flex;
     align-items: center;
@@ -288,28 +363,18 @@
   .home_left h1 span {
   padding: 0 0 0 15px;
 }
-}
 
-@media (max-width: 632px){
+@media (max-width: 652px){
   .home_left h1{
     font-size: 25px;
-    margin-left: -15px;
-  }
-
-  .home_right{
-    margin-left: -20px;
+    margin-left: 15px;
   }
 }
-
-@media (max-width: 616px){
-  .home_left h1{
-    font-size: 25px;
-  }
 }
 
-@media (max-width: 616px){
+@media (max-width: 555px){
   .home_left h1{
-    font-size: 25px;
+    font-size: 23px;
   }
 }
 
@@ -325,6 +390,12 @@
   }
 }
 
+@media (max-width: 515px){
+  .home_left h1{
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 500px){
   .home_left h1{
     font-size: 22px;
@@ -336,9 +407,22 @@
   }
 }
 
+@media (max-width: 496px){
+  .home_left h1{
+    font-size: 20px;
+    margin-left: 10px;
+  }
+}
+
 @media (max-width: 484px){
   .home_left h1{
     font-size: 20px;
+  }
+}
+
+@media (max-width: 558px){
+  .home_left h1{
+    font-size: 18px;
   }
 }
 
@@ -355,14 +439,15 @@
 
 @media (max-width: 428px){
   .home_left h1{
-    font-size: 18px;
+    font-size: 17px;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 407px){
   .home_left h1{
     font-size: 17px;
-    margin-left: -15px;
+    margin-left: 0px;
   }
 
   .home_right{
@@ -372,7 +457,7 @@
 
 @media (max-width: 390px){
   .home_left h1{
-    font-size: 16px;
+    font-size: 15.5px;
   }
 }
 
@@ -384,14 +469,16 @@
 
 @media (max-width: 350px){
   .home_left h1{
-    font-size: 13px;
+    font-size: 14px;
+    width: 100%;
+    margin-left: -25px;
   }
 }
 
 @media (max-width: 312px){
   .home_left h1{
-    font-size: 12px;
-    margin-left: -10px;
+    font-size: 13px;
+    width: 100%;
   }
 
   .home_right{
@@ -402,7 +489,6 @@
 @media (max-width: 295px){
   .home_left h1{
     font-size: 12px;
-    margin-left: -15px;
   }
 
   .home_right{
