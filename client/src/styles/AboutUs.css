@@ -11,7 +11,7 @@
 }
 
 .aboutUsText{
-    width: 70%;
+    width: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,4 +31,66 @@
     color: rgb(212, 212, 212);
     font-size: 30px;
     line-height: 50px;
+}
+
+@media(max-width: 1227px){
+    .aboutUsText h1{
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@media(max-width: 868px){
+    .aboutUsText h1{
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+@media(max-width: 591px){
+    .aboutUsText h1{
+        font-size: 18px;
+        line-height: 25px;;
+    }
+
+    .aboutUsText{
+        padding: 30px;
+        width: 80%;
+    }
+}
+
+@media(max-width: 507px){
+    .aboutUsText h1{
+        font-size: 17px;
+        line-height: 25px;;
+    }
+
+    .aboutUsText{
+        padding: 20px;
+        width: 85%;
+    }
+}
+
+@media(max-width: 396px){
+    .aboutUsText h1{
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .aboutUsText{
+        padding: 18px;
+        width: 85%;
+    }
+}
+
+@media(max-width: 310px){
+    .aboutUsText h1{
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    .aboutUsText{
+        padding: 18px;
+        width: 90%;
+    }
 }

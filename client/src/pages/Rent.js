@@ -263,6 +263,13 @@ function Rent(props) {
                     Edit
                   </button> */}
 
+                  <button
+                      className="editBtn"
+                      onClick={() => handleEdit(card)}
+                    >
+                      {t("editBtn")}
+                    </button>
+
                   {currentUser === adminEmailMain && (
                     <button
                       className="deleteBtn"
@@ -450,6 +457,82 @@ function Rent(props) {
                 onClick={() => setFullCard(null)}
               >
                 {t("close")}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isEditOpen && (
+        <div className="modalOverlay">
+          <div className="modalContent">
+            <h2>{t("edit")}</h2>
+
+            <label>{t("title")}</label>
+            <input
+              value={editData.initInformation}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  initInformation: e.target.value,
+                })
+              }
+            />
+
+            <label>{t("description")}</label>
+            <input
+              value={editData.additInformation}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  additInformation: e.target.value,
+                })
+              }
+            />
+
+            <label>{t("price")}</label>
+            <input
+              value={editData.price}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  price: e.target.value,
+                })
+              }
+            />
+
+            <label>{t("phone")}</label>
+            <input
+              value={editData.phoneNumber}
+              onChange={(e) => {
+                let value = e.target.value.replace(/\D/g, "");
+                if (value.length > 12) value = value.slice(0, 12);
+
+                setEditData({
+                  ...editData,
+                  phoneNumber: value,
+                });
+              }}
+            />
+
+            <div className="modalButtons">
+              <button
+                className="saveBtn"
+                onClick={saveEdit}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    saveEdit();
+                  }
+                }}
+              >
+                {t("save")}
+              </button>
+              <button
+                className="cancelBtn"
+                onClick={() => setIsEditOpen(false)}
+              >
+                {t("cancel")}
               </button>
             </div>
           </div>
