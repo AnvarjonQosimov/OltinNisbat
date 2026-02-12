@@ -1,15 +1,16 @@
-const {Schema, model} = require('mongoose')
-const { MAX } = require('uuid')
+const { Schema, model } = require("mongoose");
+const { MAX } = require("uuid");
 
-
-const Informations = new Schema({
+const Informations = new Schema(
+  {
     ownerId: { type: String, required: true },
-    media: [{type: String, required: true}],
-    initInformation: {type: String, required: true},
-    additInformation: {type: String, required: true},
-    price: {type: Number, required: true},
-    phoneNumber: {type: String, required: true}
-})
+    media: [{ type: String, required: true }],
+    initInformation: { type: String, required: true },
+    additInformation: { type: String, required: true },
+    price: { type: Number, required: true },
+    phoneNumber: { type: String, required: true },
+  },
+  { timestamps: true },
+);
 
-
-module.exports = model('Informations', Informations)
+module.exports = model("Informations", Informations);
