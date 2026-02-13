@@ -178,60 +178,63 @@ function Rent(props) {
       </div>
 
       <div className="rentFiltersWrapper">
+        <button className="openFilterBtn" onClick={() => setIsFilterOpen(true)}>
+          {t("sort")}
+        </button>
 
-  <button
-    className="openFilterBtn"
-    onClick={() => setIsFilterOpen(true)}
-  >
-    {t("sort")}
-  </button>
+        <div className="rentFilters">
+          <input
+            type="text"
+            placeholder={t("search")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-  <div className="rentFilters">
-    <input
-      type="text"
-      placeholder={t("search")}
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-    />
+          <input
+            type="number"
+            placeholder={t("minPrice")}
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+          />
 
-    <input
-      type="number"
-      placeholder={t("minPrice")}
-      value={minPrice}
-      onChange={(e) => setMinPrice(e.target.value)}
-    />
+          <input
+            type="number"
+            placeholder={t("maxPrice")}
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
 
-    <input
-      type="number"
-      placeholder={t("maxPrice")}
-      value={maxPrice}
-      onChange={(e) => setMaxPrice(e.target.value)}
-    />
+          <div className="sortButtons">
+            <button
+              className={sortType === "new" ? "active" : ""}
+              onClick={() => setSortType("new")}
+            >
+              {t("newest")}
+            </button>
 
-    <div className="sortButtons">
-      <button
-        className={sortType === "new" ? "active" : ""}
-        onClick={() => setSortType("new")}
-      >
-        {t("newest")}
-      </button>
+            <button
+              className={sortType === "cheap" ? "active" : ""}
+              onClick={() => setSortType("cheap")}
+            >
+              {t("cheapest")}
+            </button>
 
-      <button
-        className={sortType === "cheap" ? "active" : ""}
-        onClick={() => setSortType("cheap")}
-      >
-        {t("cheapest")}
-      </button>
+            <button
+              className={sortType === "popular" ? "active" : ""}
+              onClick={() => setSortType("popular")}
+            >
+              {t("popular")}
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <button
-        className={sortType === "popular" ? "active" : ""}
-        onClick={() => setSortType("popular")}
-      >
-        {t("popular")}
-      </button>
-    </div>
-  </div>
-</div>
+      <div className="aiHelper">
+        <script
+          src="https://bot.jaicp.com/chatwidget/VvqYHYNq:3fee57e680b061d4b45097ba06e88e4d8caa13d9/justwidget.js"
+          async
+        ></script>
+      </div>
 
       <div className="cardsAndLoading">
         {props.isLoading ? (
@@ -360,7 +363,7 @@ function Rent(props) {
 
                 <div className="rentcardline"></div>
 
-                <h3>{t("phonenumber")}: +998 (90) 996-51-02</h3>
+                <h4 className="phoneNum">{t("phonenumber")}: +998 (90) 996-51-02</h4>
 
                 <div className="rentcardline"></div>
 
@@ -683,69 +686,69 @@ function Rent(props) {
       )}
 
       {isFilterOpen && (
-  <div
-    className="filterModalOverlay"
-    onClick={() => setIsFilterOpen(false)}
-  >
-    <div
-      className="filterModalContent"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <h2>Sort & Filter</h2>
-
-      <input
-        type="text"
-        placeholder={t("search")}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <input
-        type="number"
-        placeholder={t("minPrice")}
-        value={minPrice}
-        onChange={(e) => setMinPrice(e.target.value)}
-      />
-
-      <input
-        type="number"
-        placeholder={t("maxPrice")}
-        value={maxPrice}
-        onChange={(e) => setMaxPrice(e.target.value)}
-      />
-
-      <div className="sortButtons modalSort">
-        <button
-          className={sortType === "new" ? "active" : ""}
-          onClick={() => setSortType("new")}
+        <div
+          className="filterModalOverlay"
+          onClick={() => setIsFilterOpen(false)}
         >
-          {t("newest")}
-        </button>
+          <div
+            className="filterModalContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Sort & Filter</h2>
 
-        <button
-          className={sortType === "cheap" ? "active" : ""}
-          onClick={() => setSortType("cheap")}
-        >
-          {t("cheapest")}
-        </button>
+            <input
+              type="text"
+              placeholder={t("search")}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
 
-        <button
-          className={sortType === "popular" ? "active" : ""}
-          onClick={() => setSortType("popular")}
-        >
-          {t("popular")}
-        </button>
-      </div>
+            <input
+              type="number"
+              placeholder={t("minPrice")}
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+            />
 
-      <button
-        className="closeFilterBtn"
-        onClick={() => setIsFilterOpen(false)}
-      >
-        {t("close")}
-      </button>
-    </div>
-  </div>
-)}
+            <input
+              type="number"
+              placeholder={t("maxPrice")}
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+
+            <div className="sortButtons modalSort">
+              <button
+                className={sortType === "new" ? "active" : ""}
+                onClick={() => setSortType("new")}
+              >
+                {t("newest")}
+              </button>
+
+              <button
+                className={sortType === "cheap" ? "active" : ""}
+                onClick={() => setSortType("cheap")}
+              >
+                {t("cheapest")}
+              </button>
+
+              <button
+                className={sortType === "popular" ? "active" : ""}
+                onClick={() => setSortType("popular")}
+              >
+                {t("popular")}
+              </button>
+            </div>
+
+            <button
+              className="closeFilterBtn"
+              onClick={() => setIsFilterOpen(false)}
+            >
+              {t("close")}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

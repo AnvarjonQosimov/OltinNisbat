@@ -119,6 +119,10 @@ h3 span {
   margin: 0 auto;
 }
 
+.phoneNum{
+  font-size: 17px;
+}
+
 .priceline {
   width: 1px;
   height: 30px;
@@ -1042,11 +1046,6 @@ h3 span {
     padding: 15px 0 20px 0;
   }
 }
-@media (max-width: 400px) {
-  .card {
-    width: 300px;
-  }
-}
 
 @media (max-width: 400px) {
   .card {
@@ -1167,6 +1166,10 @@ h3 span {
   .topDescription {
     font-size: 14px;
     line-height: 1.4;
+  }
+
+  .phoneNum{
+    font-size: 12px;
   }
 }
 
@@ -1362,4 +1365,10 @@ h3 span {
   .openFilterBtn {
     display: block;
   }
+}
+
+.aiHelper{
+  position: absolute;
+  top: 100px;
+  right: 25px;
 }
