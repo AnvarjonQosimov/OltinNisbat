@@ -124,7 +124,7 @@ function Header() {
 
       <div className="menu">
         <li>
-          <Link className="li" to={"/"}>
+          <Link className="li" to={"/OltinNisbat"}>
             {t("home")}
           </Link>
         </li>
