@@ -1,7 +1,6 @@
 {
   "name": "arendashop",
   "version": "0.1.0",
-  "homepage": "https://anvarjonqosimov.github.io/OltinNisbat",
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build",
   "private": true,

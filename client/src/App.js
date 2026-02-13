@@ -48,7 +48,7 @@ function App() {
       <Header />
       <LikeProvider>
       <Routes>
-        <Route path={"/OltinNisbat"}  element={<Home />}/>
+        <Route path={"/"}  element={<Home />}/>
         <Route path={"/about"} element={<About />}/>
         <Route path={"/aboutus"} element={<AboutUs />}/>
         <Route path={"/lease"} element={<Lease />}/>
