@@ -9,12 +9,13 @@ import  Lease from "./pages/Lease.js"
 import  Contact from "./pages/Contact.js"
 import  AboutUser from "./pages/AboutUser.js"
 import  MySuggestions from "./pages/MySuggestions.js"
-import {  Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Features from "./pages/Favorites.js"
 import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import {LikeProvider} from "./components/likedContext.js"
+import SingleRent from "./pages/SingleRent";
 
 function App() {
    const [cards, setCards] = useState([]);
@@ -58,6 +59,7 @@ function App() {
         {/* <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/> */}
         <Route path={"/aboutUser"} element={<AboutUser />}/>
         <Route path={"/features"} element={<Features cards={cards} />}/>
+        <Route path="/rent/:id" element={<SingleRent />} />
       </Routes>
       </LikeProvider>
     </div>

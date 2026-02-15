@@ -1366,3 +1366,45 @@ h3 span {
     display: block;
   }
 }
+
+.filterModalContent input,
+.filterModalContent select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e5e5;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.filterModalContent input:focus,
+.filterModalContent select:focus {
+  border-color: black;
+}
+
+.dark .filterModalContent input,
+.dark .filterModalContent select {
+  border-color: #333;
+  color: white;
+}
+
+.shareBtn {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shareBtn:hover {
+  background: black;
+  color: white;
+}
+
+.dark .shareBtn {
+  border-color: #444;
+  color: white;
+}

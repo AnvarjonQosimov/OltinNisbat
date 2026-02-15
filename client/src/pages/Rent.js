@@ -377,9 +377,11 @@ function Rent(props) {
                     />
                   </i>
 
-                  <button className="editBtn" onClick={() => handleEdit(card)}>
+                  {currentUser === adminEmailMain && (
+                    <button className="editBtn" onClick={() => handleEdit(card)}>
                     {t("editBtn")}
                   </button>
+                  )}
 
                   {currentUser === adminEmailMain && (
                     <button
