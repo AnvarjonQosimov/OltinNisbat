@@ -9,7 +9,7 @@ import  Lease from "./pages/Lease.js"
 import  Contact from "./pages/Contact.js"
 import  AboutUser from "./pages/AboutUser.js"
 import  MySuggestions from "./pages/MySuggestions.js"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Features from "./pages/Favorites.js"
 import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
@@ -59,7 +59,6 @@ function App() {
         {/* <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/> */}
         <Route path={"/aboutUser"} element={<AboutUser />}/>
         <Route path={"/features"} element={<Features cards={cards} />}/>
-        <Route path="/rent/:id" element={<SingleRent />} />
       </Routes>
       </LikeProvider>
     </div>

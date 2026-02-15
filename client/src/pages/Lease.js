@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { db } from "../Firebase/Firebase.js";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+// import PhoneInput from "react-phone-input-2";
+// import "react-phone-input-2/lib/style.css";
 import Success from "../components/Sucsess.js";
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,11 +28,11 @@ function Lease() {
   const [files, setFiles] = useState([]);
   const [initalInformation, setInitalInformation] = useState("");
   const [additionalInformation, setAdditionalInformation] = useState("");
-  const [price, setPrice] = useState("");
-  const [phoneNumberInPanel, setPhoneNumberInPanel] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [phoneNumberInPanel, setPhoneNumberInPanel] = useState("");
   const [collectionAdmin, setCollectionAdmin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [phoneError, setPhoneError] = useState("");
+  // const [phoneError, setPhoneError] = useState("");
   const [mediaError, setMediaError] = useState("");
   const [initialError, setInitialError] = useState("");
   const mediaInputRef = React.useRef(null);
@@ -59,14 +59,14 @@ function Lease() {
       setIsLoading(true);
       const formData = new FormData();
 
-      const cleanPhone = phoneNumberInPanel.replace(/\D/g, "");
+      // const cleanPhone = phoneNumberInPanel.replace(/\D/g, "");
 
       const ownerId = auth.currentUser?.uid;
       formData.append("ownerId", ownerId);
       formData.append("initInformation", initalInformation);
       formData.append("additInformation", additionalInformation);
-      formData.append("price", price);
-      formData.append("phoneNumber", cleanPhone);
+      // formData.append("price", price);
+      // formData.append("phoneNumber", cleanPhone);
       formData.append("id", uuid());
 
       for (let file of files) {
@@ -89,8 +89,8 @@ function Lease() {
       setVideo(null);
       setInitalInformation("");
       setAdditionalInformation("");
-      setPrice("");
-      setPhoneNumberInPanel("");
+      // setPrice("");
+      // setPhoneNumberInPanel("");
       setIsLoading(false);
     } catch (error) {
       console.error("Xatolik:", error);
@@ -100,18 +100,18 @@ function Lease() {
 
   const { t } = useTranslation();
 
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
   const [valid, setValid] = useState(true);
 
   const handleChange = (value) => {
-    setPhoneNumber(value);
-    setValid(validatePhoneNumber(value));
+    // setPhoneNumber(value);
+    // setValid(validatePhoneNumber(value));
   };
 
-  const validatePhoneNumber = (number) => {
-    const phoneNumberPattern = /^\d{10}$/;
-    return phoneNumberPattern.test(number);
-  };
+  // const validatePhoneNumber = (number) => {
+  //   const phoneNumberPattern = /^\d{10}$/;
+  //   return phoneNumberPattern.test(number);
+  // };
 
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -246,7 +246,7 @@ function Lease() {
                   </label>
                 </div>
 
-                <div className="input-container">
+                {/* <div className="input-container">
                   <input
                     type="number"
                     value={price}
@@ -260,9 +260,9 @@ function Lease() {
                     {t("price")}
                     <span>{t("pricepl")}</span>
                   </label>
-                </div>
+                </div> */}
 
-                <div className="container phone-custom">
+                {/* <div className="container phone-custom">
                   <PhoneInput
                     country={"uz"}
                     value={phoneNumberInPanel}
@@ -273,7 +273,7 @@ function Lease() {
                       autofocus: true,
                     }}
                   />
-                </div>
+                </div> */}
 
                 {user?.email === adminEmail && (
                   <button type="submit">{t("savebtn")}</button>

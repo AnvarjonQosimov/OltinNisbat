@@ -356,12 +356,12 @@ function Rent(props) {
 
                 <div className="rentcardline"></div>
 
-                <h3 className="price">
+                {/* <h3 className="price">
                   {t("price")}: {card.price} $<div className="priceline"></div>
                   <span>{t("oyiga")}</span>
                 </h3>
 
-                <div className="rentcardline"></div>
+                <div className="rentcardline"></div> */}
 
                 <h4 className="phoneNum">{t("phonenumber")}: +998 (90) 996-51-02</h4>
 
@@ -425,7 +425,7 @@ function Rent(props) {
               }
             />
 
-            <label>{t("price")}</label>
+            {/* <label>{t("price")}</label>
             <input
               value={editData.price}
               onChange={(e) =>
@@ -434,7 +434,7 @@ function Rent(props) {
                   price: e.target.value,
                 })
               }
-            />
+            /> */}
 
             <label>{t("phone")}</label>
             <input
@@ -557,9 +557,9 @@ function Rent(props) {
 
               <p className="topDescription">{fullCard.additInformation}</p>
 
-              <p>
+              {/* <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
-              </p>
+              </p> */}
 
               <p>
                 <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
