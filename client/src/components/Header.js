@@ -263,7 +263,6 @@ function Header() {
 
               {/* <Link className="linkLi" to={"/lease"}>{t("admin")}</Link> */}
 
-              <MenuItem onClick={handleClose}>
                 {user.email === adminEmailMain && (
                   <MenuItem onClick={handleClose}>
                     <Link className="linkLi" to={"/lease"}>
@@ -271,7 +270,15 @@ function Header() {
                     </Link>
                   </MenuItem>
                 )}
-              </MenuItem>
+              
+                {user.email === adminEmailMain && (
+                  <MenuItem onClick={handleClose}>
+                    <Link className="linkLi" to={"/adminpage"}>
+                      {t("adminpage")}
+                    </Link>
+                  </MenuItem>
+                )}
+              
 
               <MenuItem onClick={handleClose}>
                 <Link className="linkLi" to={"/features"}>
