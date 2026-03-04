@@ -22,12 +22,13 @@ if (process.env.USE_GOOGLE_DNS === 'true') {
 }
 
 ;(async () => {
-  try {
-    const addrs = await dnsPromises.resolveSrv('_mongodb._tcp.architekture.r1yl3pj.mongodb.net')
+  try {const clusterHost = DB_URL.split('@')[1].split('/')[0]
+await dnsPromises.resolveSrv(`_mongodb._tcp.${clusterHost}`)
     console.log('SRV addrs', addrs)
   } catch (err) {
     console.warn('SRV resolve failed (debug):', err.message)
   }
+  const addrs = await dnsPromises.resolveSrv('_mongodb._tcp.architekture.r1yl3pj.mongodb.net')
 })()
 
 if (!DB_URL) {

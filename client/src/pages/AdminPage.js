@@ -112,7 +112,7 @@ function AdminPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
+        <select className="choose" value={sortType} onChange={(e) => setSortType(e.target.value)}>
           <option value="newest">Newest</option>
           <option value="views">Most Viewed</option>
         </select>
