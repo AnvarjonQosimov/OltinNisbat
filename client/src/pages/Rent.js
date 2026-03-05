@@ -223,10 +223,7 @@ function Rent(props) {
       </div>
 
       <div className="aiHelper">
-        <script
-          src="https://bot.jaicp.com/chatwidget/bxRYREsK:f1b087a0c5feb7efd5b06e27219aee2d06e82173/justwidget.js"
-          async
-        ></script>
+        <script src="https://bot.jaicp.com/chatwidget/VvqYHYNq:3fee57e680b061d4b45097ba06e88e4d8caa13d9/justwidget.js" async></script>
       </div>
 
       <div className="cardsAndLoading">
