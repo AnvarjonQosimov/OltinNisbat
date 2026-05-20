@@ -1,5 +1,5 @@
 .Header{
-    background-color: burlywood;
+    background-color: transparent;
     height: 11vh;
     width: 100%;
     display: flex;
@@ -8,6 +8,9 @@
     padding: 1vh 0;
     position: fixed;
     z-index: 1000;
+    border-bottom: 1px solid rgb(6, 59, 2);
+    box-shadow: 0 0 50px rgb(6, 59, 2);
+    border-radius: 0 0 20px 20px;
 }
 
 .logo{
@@ -21,7 +24,8 @@
 }
 
 .logo h2{
-    color: black;
+    /* color: rgb(6, 59, 2); */
+    color: rgb(150, 150, 150);
     font-size: 30px;
     font-weight: 700;
     margin-top: 10px;
@@ -74,20 +78,53 @@
 
 .menu li:hover{
     /* background-color: greenyellow; */
-    background-color: rgb(225, 250, 177);
+    /* box-shadow: 0 0 50px 5px #d2b586; */
+    box-shadow: 0 0 10px #d2b586;
 }
 
 .menu li a {
     text-decoration: none;
-    color: rgb(78, 78, 78); 
+    color: rgb(150, 150, 150); 
 }
 
 .translate{
-    width: 6%;
+    width: auto;
     display: flex;
     align-items: center;
     height: 10vh;
     justify-content: center;
+}
+
+.lang_btn {
+    background: transparent;
+    border: 1px solid rgb(150, 150, 150);
+    color: rgb(150, 150, 150);
+    padding: 7px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.lang_btn:hover {
+    color: #d2b586;
+}
+
+.lang_btn span {
+    text-transform: capitalize;
+}
+
+@media(max-width: 760px) {
+    .lang_btn span {
+        display: none;
+    }
+    .lang_btn {
+        padding: 7px;
+    }
 }
 
 .submit_btn{
@@ -100,15 +137,15 @@
 
 .login_btn{
     background-color: transparent;
-    border: 1px solid rgb(136, 136, 136);
+    border: 1px solid rgb(150, 150, 150);
     padding: 7px 40px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.2s;
+    color: rgb(150, 150, 150);
 }
 
 .login_btn:hover{
-    background-color: rgb(225, 250, 177);
-    border: 0.5px solid rgb(225, 250, 177);
+    color: #d2b586;
 }
 
 .user{

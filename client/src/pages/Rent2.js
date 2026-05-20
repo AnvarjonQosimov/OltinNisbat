@@ -174,12 +174,12 @@ function Rent(props) {
         </Link>
       </div>
 
-      <button
+      {/* <button
         className="darkToggle"
         onClick={() => setDarkMode((prev) => !prev)}
       >
         {darkMode ? <TbRuler2Off /> : <TbRuler />}
-      </button>
+      </button> */}
 
       <div className="Rent2_text">
         <h1>{t("rent")}</h1>
@@ -228,13 +228,6 @@ function Rent(props) {
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="aiHelper">
-        <script
-          src="https://bot.jaicp.com/chatwidget/VvqYHYNq:3fee57e680b061d4b45097ba06e88e4d8caa13d9/justwidget.js"
-          async
-        ></script>
       </div>
 
       <div className="cardsAndLoading">

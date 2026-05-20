@@ -1,5 +1,5 @@
 .Features{
-    background-color: rgb(49, 120, 128);
+    background-color: #181819;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     min-height: 100vh;
     padding: 150px 50px;
+    color: rgb(120, 120, 120);
 }
 
 .features-text{
@@ -21,6 +22,7 @@
   justify-content: center;
   font-weight: 700;
   width: 100%;
+  color: #d2b586;
 }
 
 .heartBrokenIcon {

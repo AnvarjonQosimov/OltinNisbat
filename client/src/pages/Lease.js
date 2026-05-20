@@ -91,7 +91,7 @@ function Lease() {
       setAdditionalInformation("");
       // setPrice("");
       // setPhoneNumberInPanel("");
-      setIsLoading(false);
+      setIsLoading(false)
     } catch (error) {
       console.error("Xatolik:", error);
       setIsLoading(false);

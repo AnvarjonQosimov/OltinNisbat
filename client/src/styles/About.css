@@ -1,6 +1,6 @@
 .About{
-    /* background-color: rgb(91, 154, 190); */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/architecture2.jpeg);
+    background-color: #181819;
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/architecture2.jpeg); */
     background-size: cover;
     background-repeat: no-repeat;
     height: 110vh;
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 115px 0 50px 0;
-    color: white;
+    color: rgb(150, 150, 150);
 }
 
 .lines_circles{
@@ -27,13 +27,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid white;
+    border: 1px solid #d2b586;
 }
 
 .line{
     height: 1px;
     width: 100px;
-    background-color: white;
+    background-color: #d2b586;
 }
 
 .lines{
@@ -45,7 +45,7 @@
 .linee{
     height: 80px;
     width: 1px;
-    background-color: white;
+    background-color: #d2b586;
 }
 
 .linees{
@@ -68,7 +68,7 @@
     font-weight: 900;
     font-size: 33px;
     line-height: 35px;
-    color: rgb(224, 224, 224);
+    color: rgb(150, 150, 150);
 }
 
 .textt{

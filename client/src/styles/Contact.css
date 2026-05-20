@@ -1,11 +1,12 @@
 .Contact {
   /* background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/contact.jpg); */
-  background-color: rgb(235, 234, 230);
+  /* background-color: rgb(235, 234, 230); */
+  background-color: #181819;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
-  color: black;
+  color: #d2b586;
   padding: 130px 0 0 0;
   display: flex;
   justify-content: space-between;
@@ -22,10 +23,11 @@
 }
 
 .left h1 {
-  font-size: 38px;
+  font-size: 34px;
   display: flex;
   align-items: center;
   width: 100%;
+  color: #d2b586;
 }
 
 .left h1:nth-child(1) {
@@ -43,7 +45,8 @@
 }
 
 .contact-line {
-  background-color: grey;
+  background-color: rgb(6, 59, 2);
+  box-shadow: 0 0 50px 5px rgb(6, 59, 2);
   width: 1px;
   height: 60%;
   margin: auto 0;
@@ -63,12 +66,14 @@
   height: 1px;
   width: 90%;
   margin: 0 auto;
-  background-color: grey;
+  background-color: rgb(6, 59, 2);
+  box-shadow: 0 0 50px 5px rgb(6, 59, 2);
 }
 
 .right h1 {
   font-size: 35px;
   padding: 0 0 20px 0;
+  color: #d2b586;
 }
 
 .right a {
@@ -79,7 +84,7 @@
   justify-content: center;
   width: 74.5%;
   transition: 0.5s;
-  color: rgb(37, 37, 241);
+  color: #d2b586;
 }
 
 .right a span {
@@ -90,7 +95,7 @@
 }
 
 .right a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 @media (max-width: 1174px) {

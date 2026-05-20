@@ -1,6 +1,6 @@
 .Rent2 {
-  /* background-color: rgb(49, 120, 128); */
-  background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
+  background-color: #181819;
+  /* background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%); */
   width: 100%;
   padding: 50px 0 20px 0;
   min-height: 100vh;
@@ -80,6 +80,7 @@
   height: 1px;
   background-color: grey;
   margin: 20px 0 20px 50px;
+  color: #d2b586;
 }
 
 .card h1 {
@@ -1235,7 +1236,7 @@ h3 span {
   transform: scale(1.08);
 }
 
-.Rent2 {
+/* .Rent2 {
   min-height: 100vh;
   background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
   transition: 0.4s ease;
@@ -1267,7 +1268,7 @@ h3 span {
   background: #243328;
   color: white;
   border: 1px solid rgba(255,255,255,0.15);
-}
+} */
 
 .rentFilters {
   display: flex;
@@ -1279,13 +1280,20 @@ h3 span {
 .rentFilters input {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid gray;
+  border: 1px solid #d2b586 !important;
+  background-color: transparent;
+  color: #d2b586;
+  overflow: hidden;
+}
+
+.rentFilters input::placeholder{
+  color: rgb(150,150,150);
 }
 
 .rentFilters select {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid gray;
+  border: 1px solid #d2b586;
 }
 
 .sortButtons {
@@ -1297,21 +1305,22 @@ h3 span {
 .sortButtons button {
   padding: 8px 18px;
   border-radius: 20px;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid #d2b586 !important;
+  background-color: transparent !important;
   cursor: pointer;
   transition: 0.25s;
   font-size: 14px;
+  color: #d2b586 !important;
 }
 
 .sortButtons button:hover {
-  background: #f3f3f3;
+  background: rgb(2, 2, 48) !important;
 }
 
 .sortButtons button.active {
-  background: black;
-  color: white;
-  border-color: black;
+  background: rgb(2, 2, 48) !important;
+  color: rgb(150,150,150) !important;
+  border-color: rgb(150,150,150) !important;
 }
 
 .rentFiltersWrapper {

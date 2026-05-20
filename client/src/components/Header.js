@@ -22,7 +22,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import personFace from "../images/personFace.jpg";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaGlobe } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 Firebase();
@@ -33,7 +33,6 @@ function Header() {
   const [user, setUser] = useState(null);
   const [isUser, setIsUser] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [age, setAge] = React.useState("");
   const { t, i18n } = useTranslation();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
@@ -43,8 +42,17 @@ function Header() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
-  const changeLanguage = (lng) => () => i18n.changeLanguage(lng);
-  const handleChange = (event) => setAge(event.target.value);
+  
+  const [langAnchorEl, setLangAnchorEl] = React.useState(null);
+  const openLangMenu = Boolean(langAnchorEl);
+  const handleLangClick = (event) => setLangAnchorEl(event.currentTarget);
+  const handleLangClose = () => setLangAnchorEl(null);
+
+  const handleLangChange = (lng) => {
+    i18n.changeLanguage(lng);
+    handleLangClose();
+  };
+
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
   const [burgerOpen, setBurgerOpen] = useState(false);
@@ -212,26 +220,19 @@ function Header() {
       </div>
 
       <div className="translate">
-        <FormControl sx={{ m: 1, minWidth: 80 }} size="small">
-          <InputLabel id="demo-select-small-label">{t("lang")}</InputLabel>
-          <Select
-            labelId="demo-select-small-label"
-            id="demo-select-small"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem onClick={changeLanguage("uz")} value={10}>
-              UZ
-            </MenuItem>
-            <MenuItem onClick={changeLanguage("en")} value={20}>
-              EN
-            </MenuItem>
-            <MenuItem onClick={changeLanguage("ru")} value={30}>
-              РУ
-            </MenuItem>
-          </Select>
-        </FormControl>
+        <button className="lang_btn" onClick={handleLangClick}>
+          <FaGlobe size={20} />
+          <span>{t("lang")}</span>
+        </button>
+        <Menu
+          anchorEl={langAnchorEl}
+          open={openLangMenu}
+          onClose={handleLangClose}
+        >
+          <MenuItem onClick={() => handleLangChange("uz")}>O'zbekcha</MenuItem>
+          <MenuItem onClick={() => handleLangChange("en")}>English</MenuItem>
+          <MenuItem onClick={() => handleLangChange("ru")}>Русский</MenuItem>
+        </Menu>
       </div>
 
       <div className="submit_btn">
@@ -254,7 +255,7 @@ function Header() {
                 },
               }}
             >
-              <MenuItem onClick={handleClose}>{user.displayName}</MenuItem>
+              {/* <MenuItem onClick={handleClose}>{user.displayName}</MenuItem> */}
               <MenuItem onClick={handleClose}>
                 <Link className="linkLi" to={"/aboutUser"}>
                   AboutUser

@@ -21,9 +21,10 @@ if (process.env.USE_GOOGLE_DNS === 'true') {
   dns.setServers(['8.8.8.8'])
 }
 
-;(async () => {
-  try {const clusterHost = DB_URL.split('@')[1].split('/')[0]
-await dnsPromises.resolveSrv(`_mongodb._tcp.${clusterHost}`)
+; (async () => {
+  try {
+    const clusterHost = DB_URL.split('@')[1].split('/')[0]
+    await dnsPromises.resolveSrv(`_mongodb._tcp.${clusterHost}`)
     console.log('SRV addrs', addrs)
   } catch (err) {
     console.warn('SRV resolve failed (debug):', err.message)
@@ -46,7 +47,7 @@ const connectWithRetry = async (retries = 5, delayMs = 5000) => {
       app.listen(PORT_ENV, () => console.log(`Listen to -- http://localhost:${PORT_ENV}`))
       return
     } catch (e) {
-      console.error(`DB connect failed (attempt ${i+1}/${retries})`, e.message)
+      console.error(`DB connect failed (attempt ${i + 1}/${retries})`, e.message)
       if (i === retries - 1) {
         console.error('All retries failed, exiting.')
         process.exit(1)
