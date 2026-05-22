@@ -1,8 +1,9 @@
 .Lease {
   width: 100%;
-  min-height: 135vh !important;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../images/OIP\ \(111\).jpg);
+  height: 100vh !important;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/OIP\ \(111\).jpg); */
+    background-color: #181819;
   padding: 40px 0 20px 0;
 }
 

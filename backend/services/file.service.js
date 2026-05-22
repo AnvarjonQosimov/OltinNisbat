@@ -26,4 +26,4 @@ class FileService {
     }
 }
 
-module.exports = new FileService
+module.exports = new FileService()

@@ -16,7 +16,6 @@ import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import {LikeProvider} from "./components/likedContext.js"
-import SingleRent from "./pages/SingleRent";
 
 function App() {
    const [cards, setCards] = useState([]);

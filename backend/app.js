@@ -24,12 +24,11 @@ if (process.env.USE_GOOGLE_DNS === 'true') {
 ; (async () => {
   try {
     const clusterHost = DB_URL.split('@')[1].split('/')[0]
-    await dnsPromises.resolveSrv(`_mongodb._tcp.${clusterHost}`)
+    const addrs = await dnsPromises.resolveSrv(`_mongodb._tcp.${clusterHost}`)
     console.log('SRV addrs', addrs)
   } catch (err) {
     console.warn('SRV resolve failed (debug):', err.message)
   }
-  const addrs = await dnsPromises.resolveSrv('_mongodb._tcp.architekture.r1yl3pj.mongodb.net')
 })()
 
 if (!DB_URL) {
@@ -41,7 +40,8 @@ const connectWithRetry = async (retries = 5, delayMs = 5000) => {
   for (let i = 0; i < retries; i++) {
     try {
       await mongoose.connect(DB_URL, {
-        serverSelectionTimeoutMS: 4000
+        serverSelectionTimeoutMS: 4000,
+        family: 4
       })
       console.log('DB connected')
       app.listen(PORT_ENV, () => console.log(`Listen to -- http://localhost:${PORT_ENV}`))

@@ -1,5 +1,6 @@
 .Home {
   height: 100vh;
+  /* background-color: #031401; */
   background-color: #181819;
   /* background-color: rgb(2, 25, 1); */
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
@@ -45,6 +46,10 @@
   border-right: none;
 }
 
+.homeStatistics h1{
+  color: #d2b586 !important;
+}
+
 .homeStatistics h2{
   color: rgb(150, 150, 150);
 }
@@ -57,7 +62,8 @@
   margin: 0 auto;
   justify-content: center;
   width: 90.5%;
-  color: #d2b586;
+  /* color: #d2b586; */
+  color: rgb(150, 150, 150);
 }
 
 .home_left h1 span {
@@ -75,13 +81,13 @@ a{
 }
 
 .linktorentbtn button{
-  border: 1px solid #d2b586;
+  border: 1px solid rgb(150, 150, 150);
   border-radius: 10px;
   padding: 10px 50px;
   margin-top: 40px;
   background-color: #181819;
-  color: #d2b586;
-  box-shadow: 0 0 50px #d2b586;
+  color: #d5c6af;
+  box-shadow: 0 0 50px rgb(150, 150, 150);
   /* box-shadow: 0 0 50px 10px #d2b586; */
   /* background-color: #d2b586;
   color:  #181819; */
@@ -90,7 +96,7 @@ a{
 
 .linktorentbtn button:hover{
   background-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 100px #d2b586;
+  box-shadow: 0 0 100px rgb(150, 150, 150);
 }
 
 /* Right side */

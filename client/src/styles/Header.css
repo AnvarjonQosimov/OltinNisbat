@@ -79,7 +79,7 @@
 .menu li:hover{
     /* background-color: greenyellow; */
     /* box-shadow: 0 0 50px 5px #d2b586; */
-    box-shadow: 0 0 10px #d2b586;
+    box-shadow: 0 0 10px rgb(150, 150, 150);
 }
 
 .menu li a {
@@ -365,7 +365,7 @@
 .burger span {
   height: 3px;
   width: 100%;
-  background: #111;
+  background: rgb(150, 150, 150);
   border-radius: 2px;
   transition: 0.3s;
 }
