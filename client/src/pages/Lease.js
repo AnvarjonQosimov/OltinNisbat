@@ -28,6 +28,10 @@ function Lease() {
   const [files, setFiles] = useState([]);
   const [initalInformation, setInitalInformation] = useState("");
   const [additionalInformation, setAdditionalInformation] = useState("");
+  const [floor, setFloor] = useState("");
+  const [totalarea, setTotalarea] = useState("");
+  const [livingarea, setLivingarea] = useState("");
+  const [rooms, setRooms] = useState("");
   // const [price, setPrice] = useState("");
   // const [phoneNumberInPanel, setPhoneNumberInPanel] = useState("");
   const [collectionAdmin, setCollectionAdmin] = useState("");
@@ -65,6 +69,10 @@ function Lease() {
       formData.append("ownerId", ownerId);
       formData.append("initInformation", initalInformation);
       formData.append("additInformation", additionalInformation);
+      formData.append("floor", floor);
+      formData.append("totalarea", totalarea);
+      formData.append("livingarea", livingarea);
+      formData.append("rooms", rooms);
       // formData.append("price", price);
       // formData.append("phoneNumber", cleanPhone);
       formData.append("id", uuid());
@@ -73,7 +81,7 @@ function Lease() {
         formData.append("media", file);
       }
 
-      await axios.post("http://localhost:8090/api/post/create", formData, {
+      await axios.post("http://localhost:8070/api/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -89,6 +97,10 @@ function Lease() {
       setVideo(null);
       setInitalInformation("");
       setAdditionalInformation("");
+      setFloor("");
+      setTotalarea("");
+      setLivingarea("");
+      setRooms("");
       // setPrice("");
       // setPhoneNumberInPanel("");
       setIsLoading(false)
@@ -218,7 +230,7 @@ function Lease() {
                   <input
                     type="text"
                     value={initalInformation}
-                    maxle={25}
+                    maxLength={25}
                     className="input-field"
                     placeholder=" "
                     onChange={handleInitialChange}
@@ -232,17 +244,79 @@ function Lease() {
                 </div>
 
                 <div className="input-container">
-                  <input
-                    type="text"
+                  <textarea
                     value={additionalInformation}
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setAdditionalInformation(e.target.value)}
                     id="optional"
-                    required
                   />
                   <label htmlFor="optional" className="input-label">
                     {t("additionalinf")}
+                  </label>
+                </div>
+
+                <div className="input-container">
+                  <input
+                    type="number"
+                    value={floor}
+                    className="input-field"
+                    placeholder=" "
+                    onChange={(e) => setFloor(e.target.value)}
+                    id="floor"
+                    required
+                  />
+                  <label htmlFor="floor" className="input-label">
+                    {t("number of floors")}
+                    <span />
+                  </label>
+                </div>
+
+                <div className="input-container">
+                  <input
+                    type="number"
+                    value={totalarea}
+                    className="input-field"
+                    placeholder=" "
+                    onChange={(e) => setTotalarea(e.target.value)}
+                    id="totalarea"
+                    required
+                  />
+                  <label htmlFor="totalarea" className="input-label">
+                    {t("total area")}
+                    <span />
+                  </label>
+                </div>
+
+                <div className="input-container">
+                  <input
+                    type="number"
+                    value={livingarea}
+                    className="input-field"
+                    placeholder=" "
+                    onChange={(e) => setLivingarea(e.target.value)}
+                    id="livingarea"
+                    required
+                  />
+                  <label htmlFor="livingarea" className="input-label">
+                    {t("living area")}
+                    <span />
+                  </label>
+                </div>
+
+                <div className="input-container">
+                  <input
+                    type="number"
+                    value={rooms}
+                    className="input-field"
+                    placeholder=" "
+                    onChange={(e) => setRooms(e.target.value)}
+                    id="rooms"
+                    required
+                  />
+                  <label htmlFor="rooms" className="input-label">
+                    {t("number of rooms")}
+                    <span />
                   </label>
                 </div>
 

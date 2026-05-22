@@ -25,7 +25,7 @@ function Home() {
         setUsers(usersData);
         setUsersCount(usersData.length);
 
-        const response = await axios.get("http://localhost:8090/api/post/get");
+        const response = await axios.get("http://localhost:8070/api/post/get");
         if (response.data) {
           setRendersCount(response.data.length);
         }

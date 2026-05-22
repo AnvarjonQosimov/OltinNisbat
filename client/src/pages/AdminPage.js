@@ -41,7 +41,7 @@ function AdminPage() {
 
   const fetchCards = async () => {
     try {
-      const res = await axios.get("http://localhost:8090/api/post/get");
+      const res = await axios.get("http://localhost:8070/api/post/get");
       setCards(res.data);
     } catch (err) {
       console.log(err);
@@ -49,7 +49,7 @@ function AdminPage() {
   };
   const deleteCard = async (id) => {
     try {
-      await axios.delete(`http://localhost:8090/api/post/delete/${id}`);
+      await axios.delete(`http://localhost:8070/api/post/delete/${id}`);
       setCards(cards.filter((card) => card._id !== id));
       setSelectedCard(null);
     } catch (err) {

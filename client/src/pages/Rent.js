@@ -58,7 +58,7 @@ function Rent(props) {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:8090/api/post/get");
+      const response = await axios.get("http://localhost:8070/api/post/get");
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -102,7 +102,7 @@ function Rent(props) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8090/api/post/delete/${id}`);
+      await axios.delete(`http://localhost:8070/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -123,7 +123,7 @@ function Rent(props) {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:8090/api/post/edit/${editId}`,
+        `http://localhost:8070/api/post/edit/${editId}`,
         editData,
       );
 
@@ -262,7 +262,7 @@ function Rent(props) {
                         }}
                       >
                         {card.media.map((file, index) => {
-                          const url = `http://localhost:8090/${file}`;
+                          const url = `http://localhost:8070/${file}`;
 
                           return file.endsWith(".mp4") ||
                             file.endsWith(".mov") ||
@@ -311,7 +311,7 @@ function Rent(props) {
 
                 <div className="rentcardline"></div>
 
-                <div className="card-h2">
+                {/* <div className="card-h2">
                   <h2
                     className="short-text"
                     onClick={async () => {
@@ -319,7 +319,7 @@ function Rent(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8090/api/post/view/${card._id}`,
+                          `http://localhost:8070/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -337,6 +337,33 @@ function Rent(props) {
                     {card.additInformation.length > 43
                       ? card.additInformation.slice(0, 43) + "..."
                       : card.additInformation}
+                  </h2>
+                </div> */}
+
+                <div className="card-h3">
+                  <h2
+                    className="short-text"
+                    onClick={async () => {
+                      setFullCard(card);
+
+                      try {
+                        await axios.put(
+                          `http://localhost:8070/api/post/view/${card._id}`,
+                        );
+
+                        setUserCards((prev) =>
+                          prev.map((c) =>
+                            c._id === card._id
+                              ? { ...c, views: (c.views || 0) + 1 }
+                              : c,
+                          ),
+                        );
+                      } catch (e) {
+                        console.log(e);
+                      }
+                    }}
+                  >
+                    {card.floor}
                   </h2>
                 </div>
 
@@ -492,7 +519,7 @@ function Rent(props) {
 
               <Zoom key={currentSlide.full || 0}>
                 <img
-                  src={`http://localhost:8090/${
+                  src={`http://localhost:8070/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
@@ -523,7 +550,7 @@ function Rent(props) {
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:8090/${img}`}
+                    src={`http://localhost:8070/${img}`}
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}

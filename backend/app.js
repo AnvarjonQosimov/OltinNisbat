@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload())
 app.use(express.static('static'))
 
-const PORT_ENV = process.env.PORT || 8090
+const PORT_ENV = process.env.PORT || 8070
 const DB_URL = process.env.MONGODB_URL
 
 const dns = require('dns')
