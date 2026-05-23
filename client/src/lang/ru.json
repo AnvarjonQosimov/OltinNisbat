@@ -76,5 +76,9 @@
     "rooms": "Количество комнат",
     "flloor": "Этаж",
     "sortandfilter": "Сортировка и фильтрация",
-    "renders": "Проекты"
+    "renders": "Проекты",
+    "floors": "Этажи",
+    "cancel": "Отмена",
+    "letStart": "Начнём",
+    "numberofrooms": "Количество комнат"
 }

@@ -76,5 +76,9 @@
     "rooms": "Number of rooms",
     "flloor": "Floor",
     "sortandfilter": "Sort & Filter",
-    "renders": "Renders"
+    "renders": "Renders",
+    "floors": "Floors",
+    "cancel": "Cancel",
+    "letStart": "Let's start",
+    "numberofrooms": "Number of rooms"
 }

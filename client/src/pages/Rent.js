@@ -325,7 +325,8 @@ function Rent(props) {
 
                 <div className="lineee"></div>
 
-                  <h1>{card.initInformation}</h1>
+                  <div className="cardBottom">
+                    <h1>{card.initInformation}</h1>
 
                 <div className="rentcardline"></div>
 
@@ -422,6 +423,7 @@ function Rent(props) {
                       {t("delete")}
                     </button>
                   )}
+                  </div>
                 </div>
               </div>
             ))}

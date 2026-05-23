@@ -44,19 +44,19 @@ function Home() {
       <div className="home_left">
         <div className="homeleftTop">
           <h1><span>{t('welcome')} {t('welcomepl')}</span></h1>
-        <Link to={"/rent"} className="linktorentbtn"><button>{t("Let's start")}</button></Link>
+        <Link to={"/rent"} className="linktorentbtn"><button>{t("letStart")}</button></Link>
         </div>
 
         <div className="homeStatistics">
           <div className="numberOfusers">
-            <h2 className="userscountstatistic">Users</h2>
+            <h2 className="userscountstatistic">{t("users")}</h2>
           <h1>{usersCount}</h1>
         </div>
 
         <h1><MdStackedLineChart/></h1>
 
         <div className="numberOfRenders">
-          <h2 className="renderscountstatistic">Renders</h2>
+          <h2 className="renderscountstatistic">{t("renders")}</h2>
           <h1>{rendersCount}</h1>
         </div>
         </div>

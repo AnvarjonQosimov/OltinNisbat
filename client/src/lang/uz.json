@@ -76,5 +76,9 @@
     "rooms": "Xonalari soni",
     "flloor": "Qavatlar",
     "sortandfilter": "Saralash va Filtrlash",
-    "renders": "Loyihalar"
+    "renders": "Loyihalar",
+    "floors": "Qavatlar",
+    "cancel": "Bekor qilish",
+    "letStart": "Boshlaylik",
+    "numberofrooms": "Xonalari soni"
 }
