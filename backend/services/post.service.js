@@ -8,6 +8,8 @@ class PostService {
   }
 
  async createPost(post, files) {
+  console.log(post)
+  
   let mediaArray = [];
 
   if (files?.media) {
@@ -23,8 +25,22 @@ class PostService {
 
   const newPost = await Informations.create({
     ownerId: post.ownerId,
-    ...post,
-    media: mediaArray
+
+    media: mediaArray,
+
+    initInformation: post.initInformation,
+
+    additInformation: post.additInformation,
+
+    floor: Number(post.floor),
+
+    totalarea: Number(post.totalarea),
+
+    livingarea: Number(post.livingarea),
+
+    rooms: Number(post.rooms),
+
+    views: 0,
   });
 
   return newPost;
@@ -40,7 +56,15 @@ class PostService {
       throw new Error("Id not Found");
     }
 
-    const updatedData = await Informations.findByIdAndUpdate(id, post, {
+    const updatedPost = {
+      ...post,
+      floor: post.floor ? Number(post.floor) : post.floor,
+      totalarea: post.totalarea ? Number(post.totalarea) : post.totalarea,
+      livingarea: post.livingarea ? Number(post.livingarea) : post.livingarea,
+      rooms: post.rooms ? Number(post.rooms) : post.rooms,
+    };
+
+    const updatedData = await Informations.findByIdAndUpdate(id, updatedPost, {
       new: true,
     });
     return updatedData;

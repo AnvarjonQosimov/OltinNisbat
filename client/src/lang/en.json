@@ -60,5 +60,21 @@
     "cheapest": "Cheapest",
     "popular": "Popular",
     "sort": "Filter",
-    "adminpage": "Admin Page"
+    "adminpage": "Admin Page",
+    "adminpanel": "Admin Panel",
+    "users": "Users",
+    "cards": "Cards",
+    "views": "Views",
+    "owner": "Owner",
+    "created": "Created",
+    "mostviewed": "Most Viewed",
+    "searchpl": "Search...",
+    "unknown": "Unknown",
+    "numberoffloors": "Number of floors",
+    "totalarea": "Total area",
+    "livingarea": "Living area",
+    "rooms": "Number of rooms",
+    "flloor": "Floor",
+    "sortandfilter": "Sort & Filter",
+    "renders": "Renders"
 }

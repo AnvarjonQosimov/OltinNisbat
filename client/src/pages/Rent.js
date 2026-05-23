@@ -46,6 +46,10 @@ function Rent(props) {
   const [editData, setEditData] = useState({
     initInformation: "",
     additInformation: "",
+    floor: "",
+    totalarea: "",
+    livingarea: "",
+    rooms: "",
     price: "",
     phoneNumber: "",
   });
@@ -55,6 +59,10 @@ function Rent(props) {
   const [fullCard, setFullCard] = useState(null);
 
   const { likedIds, toggleLike } = useContext(LikeContext);
+
+  const handleNumberInputWheel = (e) => {
+    e.preventDefault();
+  };
 
   const fetchCards = async () => {
     try {
@@ -76,7 +84,11 @@ function Rent(props) {
     .filter((card) => {
       const matchesSearch =
         card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
-        card.additInformation?.toLowerCase().includes(search.toLowerCase());
+        card.additInformation?.toLowerCase().includes(search.toLowerCase()) ||
+        card.floor?.toString().includes(search.toLowerCase()) ||
+        card.totalarea?.toString().includes(search.toLowerCase()) ||
+        card.livingarea?.toString().includes(search.toLowerCase()) ||
+        card.rooms?.toString().includes(search.toLowerCase());
 
       const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
       const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
@@ -113,6 +125,10 @@ function Rent(props) {
     setEditData({
       initInformation: card.initInformation,
       additInformation: card.additInformation,
+      floor: card.floor,
+      totalarea: card.totalarea,
+      livingarea: card.livingarea,
+      rooms: card.rooms,
       price: card.price,
       phoneNumber: card.phoneNumber,
     });
@@ -195,6 +211,7 @@ function Rent(props) {
             placeholder={t("minPrice")}
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
+            onWheel={handleNumberInputWheel}
           />
 
           <input
@@ -202,6 +219,7 @@ function Rent(props) {
             placeholder={t("maxPrice")}
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
+            onWheel={handleNumberInputWheel}
           />
 
           <div className="sortButtons">
@@ -223,7 +241,7 @@ function Rent(props) {
       </div>
 
       <div className="cardsAndLoading">
-        {props.isLoading ? (
+        {isLoading ? (
           <div className="rentLoading">
             <Loading />
           </div>
@@ -307,7 +325,7 @@ function Rent(props) {
 
                 <div className="lineee"></div>
 
-                <h1>{card.initInformation}</h1>
+                  <h1>{card.initInformation}</h1>
 
                 <div className="rentcardline"></div>
 
@@ -340,7 +358,7 @@ function Rent(props) {
                   </h2>
                 </div> */}
 
-                <div className="card-h3">
+                <div className="card-h2">
                   <h2
                     className="short-text"
                     onClick={async () => {
@@ -363,7 +381,7 @@ function Rent(props) {
                       }
                     }}
                   >
-                    {card.floor}
+                    {t("floors")}: {card.floor} <br/>  {t("totalarea")}: {card.totalarea} m² <br/> {t("livingarea")}: {card.livingarea} m² <br/> {t("rooms")}: {card.rooms}
                   </h2>
                 </div>
 
@@ -436,6 +454,58 @@ function Rent(props) {
                   additInformation: e.target.value,
                 })
               }
+            />
+
+            <label>{t("flloor")}</label>
+            <input
+              type="number"
+              value={editData.floor}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  floor: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+              <label>{t("totalarea")}</label>
+            <input
+              type="number"
+              value={editData.totalarea}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  totalarea: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+              <label>{t("livingarea")}</label>
+            <input
+              type="number"
+              value={editData.livingarea}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  livingarea: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+            <label>{t("rooms")}</label>
+            <input
+              type="number"
+              value={editData.rooms}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  rooms: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
             />
 
             {/* <label>{t("price")}</label>
@@ -570,6 +640,11 @@ function Rent(props) {
 
               <p className="topDescription">{fullCard.additInformation}</p>
 
+              <p className="topDescription"><strong>{t("floors")}:</strong> {fullCard.floor}</p>
+              <p className="topDescription"><strong>{t("totalarea")}:</strong> {fullCard.totalarea} m²</p>
+              <p className="topDescription"><strong>{t("livingarea")}:</strong> {fullCard.livingarea} m²</p>
+              <p className="topDescription"><strong>{t("rooms")}:</strong> {fullCard.rooms}</p>
+
               {/* <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
               </p> */}
@@ -643,6 +718,7 @@ function Rent(props) {
               placeholder={t("minPrice")}
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
+              onWheel={handleNumberInputWheel}
             />
 
             <input
@@ -650,6 +726,7 @@ function Rent(props) {
               placeholder={t("maxPrice")}
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
+              onWheel={handleNumberInputWheel}
             />
 
             <div className="sortButtons modalSort">

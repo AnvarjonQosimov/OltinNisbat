@@ -16,21 +16,23 @@
 
 .card {
   cursor: pointer;
-  border-radius: 20px !important;
-  width: 330px;
-  margin: 42px 42px;
-  background-color: rgb(247, 248, 230) !important;
+  /* border-radius: 20px !important; */
+  border-radius: 0px !important;
+  width: 400px;
+  margin: 35px 35px !important;
+  /* background-color: rgb(247, 248, 230) !important; */
+  background-color: transparent !important;
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
   padding: 0 0 15px 0 !important;
   text-align: center;
-  box-shadow: 10px 10px 50px rgb(77, 77, 77);
+  /* box-shadow: 10px 10px 50px rgb(77, 77, 77); */
   transition: 0.3s;
 }
 
 .card:hover {
-  box-shadow: 10px 10px 50px rgb(77, 77, 77);
+  /* box-shadow: 10px 10px 50px rgb(77, 77, 77); */
 }
 
 .rentVideo {
@@ -66,7 +68,7 @@
   font-size: 25px;
   width: 90%;
   margin: 0 auto;
-  color: rgb(36, 5, 5);
+  /* color: rgb(36, 5, 5); */
   text-align: center;
   white-space: normal;
   word-break: break-word;

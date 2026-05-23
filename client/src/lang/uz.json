@@ -60,5 +60,21 @@
     "cheapest": "Eng arzon",
     "popular": "Popular",
     "sort": "Filtrlash",
-    "adminpage": "Admin sahifasi"
+    "adminpage": "Admin sahifasi",
+    "adminpanel": "Admin paneli",
+    "users": "Foydalanuvchilar",
+    "cards": "Kartalar",
+    "views": "Ko'rishlar",
+    "owner": "Egasi",
+    "created": "Yaratildi",
+    "mostviewed": "Ko'p ko'rilgan",
+    "searchpl": "Qidirish...",
+    "unknown": "Noma'lum",
+    "numberoffloors": "Qavatlari soni",
+    "totalarea": "Jami maydoni",
+    "livingarea": "Yashovchi maydoni",
+    "rooms": "Xonalari soni",
+    "flloor": "Qavatlar",
+    "sortandfilter": "Saralash va Filtrlash",
+    "renders": "Loyihalar"
 }

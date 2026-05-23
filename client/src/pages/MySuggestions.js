@@ -46,6 +46,10 @@ function MySuggestions(props) {
   const [editData, setEditData] = useState({
     initInformation: "",
     additInformation: "",
+    floor: "",
+    totalarea: "",
+    livingarea: "",
+    rooms: "",
     price: "",
     phoneNumber: "",
   });
@@ -55,6 +59,10 @@ function MySuggestions(props) {
   const [fullCard, setFullCard] = useState(null);
 
   const { likedIds, toggleLike } = useContext(LikeContext);
+
+  const handleNumberInputWheel = (e) => {
+    e.preventDefault();
+  };
 
   const fetchCards = async () => {
     try {
@@ -78,7 +86,11 @@ function MySuggestions(props) {
     .filter((card) => {
       const matchesSearch =
         card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
-        card.additInformation?.toLowerCase().includes(search.toLowerCase());
+        card.additInformation?.toLowerCase().includes(search.toLowerCase()) ||
+        card.floor?.toString().includes(search.toLowerCase()) ||
+        card.totalarea?.toString().includes(search.toLowerCase()) ||
+        card.livingarea?.toString().includes(search.toLowerCase()) ||
+        card.rooms?.toString().includes(search.toLowerCase());
 
       const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
       const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
@@ -109,6 +121,10 @@ function MySuggestions(props) {
     setEditData({
       initInformation: card.initInformation,
       additInformation: card.additInformation,
+      floor: card.floor,
+      totalarea: card.totalarea,
+      livingarea: card.livingarea,
+      rooms: card.rooms,
       price: card.price,
       phoneNumber: card.phoneNumber,
     });
@@ -191,6 +207,7 @@ function MySuggestions(props) {
             placeholder={t("minPrice")}
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
+            onWheel={handleNumberInputWheel}
           />
 
           <input
@@ -198,6 +215,7 @@ function MySuggestions(props) {
             placeholder={t("maxPrice")}
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
+            onWheel={handleNumberInputWheel}
           />
 
           <div className="sortButtons">
@@ -414,6 +432,58 @@ function MySuggestions(props) {
               }
             />
 
+            <label>{t("flloor")}}</label>
+            <input
+              type="number"
+              value={editData.floor}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  floor: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+            <label>{t("totalarea")}}</label>
+            <input
+              type="number"
+              value={editData.totalarea}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  totalarea: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+            <label>{t("livingarea")}}</label>
+            <input
+              type="number"
+              value={editData.livingarea}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  livingarea: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
+            <label>{t("rooms")}}</label>
+            <input
+              type="number"
+              value={editData.rooms}
+              onChange={(e) =>
+                setEditData({
+                  ...editData,
+                  rooms: e.target.value,
+                })
+              }
+              onWheel={handleNumberInputWheel}
+            />
+
             <label>{t("price")}</label>
             <input
               value={editData.price}
@@ -546,6 +616,11 @@ function MySuggestions(props) {
 
               <p className="topDescription">{fullCard.additInformation}</p>
 
+              <p className="topDescription"><strong>{t("floors")}:</strong> {fullCard.floor}</p>
+              <p className="topDescription"><strong>{t("totalarea")}:</strong> {fullCard.totalarea} m²</p>
+              <p className="topDescription"><strong>{t("livingarea")}:</strong> {fullCard.livingarea} m²</p>
+              <p className="topDescription"><strong>{t("rooms")}:</strong> {fullCard.rooms}</p>
+
               <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
               </p>
@@ -619,6 +694,7 @@ function MySuggestions(props) {
               placeholder={t("minPrice")}
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
+              onWheel={handleNumberInputWheel}
             />
 
             <input
@@ -626,6 +702,7 @@ function MySuggestions(props) {
               placeholder={t("maxPrice")}
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
+              onWheel={handleNumberInputWheel}
             />
 
             <div className="sortButtons modalSort">

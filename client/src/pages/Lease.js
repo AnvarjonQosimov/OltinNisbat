@@ -145,6 +145,10 @@ function Lease() {
 
   const adminEmail = "oltinnisbatarch@gmail.com";
 
+  const handleNumberInputWheel = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -263,6 +267,7 @@ function Lease() {
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setFloor(e.target.value)}
+                    onWheel={handleNumberInputWheel}
                     id="floor"
                     required
                   />
@@ -279,6 +284,7 @@ function Lease() {
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setTotalarea(e.target.value)}
+                    onWheel={handleNumberInputWheel}
                     id="totalarea"
                     required
                   />
@@ -295,6 +301,7 @@ function Lease() {
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setLivingarea(e.target.value)}
+                    onWheel={handleNumberInputWheel}
                     id="livingarea"
                     required
                   />
@@ -311,6 +318,7 @@ function Lease() {
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setRooms(e.target.value)}
+                    onWheel={handleNumberInputWheel}
                     id="rooms"
                     required
                   />

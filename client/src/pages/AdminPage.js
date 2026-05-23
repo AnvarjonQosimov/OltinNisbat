@@ -90,31 +90,31 @@ function AdminPage() {
 
   return (
     <div className="AdminPage">
-      <h1>Admin Panel</h1>
+      <h1>{t("adminpanel")}</h1>
       <div className="stats">
         <div className="statBox">
-          <h2>Users</h2>
+          <h2>{t("users")}</h2>
           <p>{usersCount}</p>
         </div>
         <div className="statBox">
-          <h2>Cards</h2>
+          <h2>{t("cards")}</h2>
           <p>{cards.length}</p>
         </div>
         <div className="statBox">
-          <h2>Views</h2>
+          <h2>{t("views")}</h2>
           <p>{cards.reduce((acc, card) => acc + (card.views || 0), 0)}</p>
         </div>
       </div>
       <div className="controls">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={t("searchpl")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <select className="choose" value={sortType} onChange={(e) => setSortType(e.target.value)}>
-          <option value="newest">Newest</option>
-          <option value="views">Most Viewed</option>
+          <option value="newest">{t("newest")}</option>
+          <option value="views">{t("mostviewed")}</option>
         </select>
       </div>
       <div className="cardsList">
@@ -136,16 +136,16 @@ function AdminPage() {
             <h2>{selectedCard.initInformation}</h2>
             <p>{selectedCard.additInformation}</p>
             <p>
-              <strong>Owner:</strong> {getOwnerEmail(selectedCard.ownerId)}
+              <strong>{t("owner")}:</strong> {getOwnerEmail(selectedCard.ownerId)}
             </p>
             <p>
-              <strong>Views:</strong> {selectedCard.views || 0}
+              <strong>{t("views")}:</strong> {selectedCard.views || 0}
             </p>
             <p>
-              <strong>Created:</strong>{" "}
+              <strong>{t("created")}:</strong>{" "}
               {selectedCard.createdAt
                 ? new Date(selectedCard.createdAt).toLocaleString()
-                : "Unknown"}
+                : t("unknown")}
             </p>
             <div className="modalButtons">
               {currentUser === adminEmail && (
@@ -160,7 +160,7 @@ function AdminPage() {
                 className="closeBtn"
                 onClick={() => setSelectedCard(null)}
               >
-                Close
+                {t("close")}
               </button>
             </div>
           </div>
