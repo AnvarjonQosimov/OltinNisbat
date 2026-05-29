@@ -2,9 +2,11 @@ import { BsSlash } from "react-icons/bs";
 import { TbBackslash } from "react-icons/tb";
 import "../styles/Success.css"
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Sucsess() {
   const[exit, setExit] = useState(false)
+  const { t } = useTranslation();
 
   const exitX = () => {
     setExit(true)
@@ -26,7 +28,7 @@ function Sucsess() {
       <div className="success-line"></div>
 
       <div className="success-text">
-        <p>Success</p>
+        <p>{t("success")}</p>
       </div>
       </div>)}
     </div>

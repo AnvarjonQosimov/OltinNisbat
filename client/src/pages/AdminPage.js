@@ -18,6 +18,7 @@ function AdminPage() {
   const adminEmail = "oltinnisbatarch@gmail.com";
   const [users, setUsers] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [showUsersModal, setShowUsersModal] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -79,11 +80,6 @@ function AdminPage() {
     );
   }
 
-  const getOwnerEmail = (ownerId) => {
-    const user = users.find((u) => u.uid === ownerId);
-    return user ? user.email : "Unknown";
-  };
-
   const handleDelete = async (id) => {
   await deleteCard(id);
 };
@@ -92,7 +88,7 @@ function AdminPage() {
     <div className="AdminPage">
       <h1>{t("adminpanel")}</h1>
       <div className="stats">
-        <div className="statBox">
+        <div className="statBox" onClick={() => setShowUsersModal(true)} style={{ cursor: 'pointer' }}>
           <h2>{t("users")}</h2>
           <p>{usersCount}</p>
         </div>
@@ -136,13 +132,13 @@ function AdminPage() {
             <h2>{selectedCard.initInformation}</h2>
             <p>{selectedCard.additInformation}</p>
             <p>
-              <strong>{t("owner")}:</strong> {getOwnerEmail(selectedCard.ownerId)}
+              <strong>{t("id")}:</strong> {selectedCard._id}
             </p>
             <p>
               <strong>{t("views")}:</strong> {selectedCard.views || 0}
             </p>
             <p>
-              <strong>{t("created")}:</strong>{" "}
+              <strong>{t("posted")}:</strong>{" "}
               {selectedCard.createdAt
                 ? new Date(selectedCard.createdAt).toLocaleString()
                 : t("unknown")}
@@ -192,6 +188,32 @@ function AdminPage() {
                 onClick={() => setConfirmDeleteId(null)}
               >
                 {t("yoq")}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showUsersModal && (
+        <div
+          className="modalOverlay"
+          onClick={() => setShowUsersModal(false)}
+        >
+          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+            <h2>{t("users")}</h2>
+            <div className="usersList">
+              {users.map((user) => (
+                <div key={user.id} className="userItem">
+                  <p>{user.email}</p>
+                </div>
+              ))}
+            </div>
+            <div className="modalButtons">
+              <button
+                className="closeBtn"
+                onClick={() => setShowUsersModal(false)}
+              >
+                {t("close")}
               </button>
             </div>
           </div>

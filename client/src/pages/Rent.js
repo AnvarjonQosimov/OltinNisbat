@@ -37,8 +37,8 @@ function Rent(props) {
 
   const [userCards, setUserCards] = useState([]);
   const [search, setSearch] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minArea, setMinArea] = useState("");
+  const [maxArea, setMaxArea] = useState("");
   const [sortType, setSortType] = useState("new");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -90,8 +90,8 @@ function Rent(props) {
         card.livingarea?.toString().includes(search.toLowerCase()) ||
         card.rooms?.toString().includes(search.toLowerCase());
 
-      const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
-      const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
+      const matchesMin = minArea ? card.totalarea >= Number(minArea) : true;
+      const matchesMax = maxArea ? card.totalarea <= Number(maxArea) : true;
 
       return matchesSearch && matchesMin && matchesMax;
     })
@@ -208,17 +208,17 @@ function Rent(props) {
 
           <input
             type="number"
-            placeholder={t("minPrice")}
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
+            placeholder={t("minArea")} 
+            value={minArea}
+            onChange={(e) => setMinArea(e.target.value)}
             onWheel={handleNumberInputWheel}
           />
 
           <input
             type="number"
-            placeholder={t("maxPrice")}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
+            placeholder={t("maxArea")}
+            value={maxArea}
+            onChange={(e) => setMaxArea(e.target.value)}
             onWheel={handleNumberInputWheel}
           />
 
@@ -521,7 +521,7 @@ function Rent(props) {
               }
             /> */}
 
-            <label>{t("phone")}</label>
+            {/* <label>{t("phone")}</label>
             <input
               value={editData.phoneNumber}
               onChange={(e) => {
@@ -533,7 +533,7 @@ function Rent(props) {
                   phoneNumber: value,
                 });
               }}
-            />
+            /> */}
 
             <div className="modalButtons">
               <button
@@ -652,7 +652,7 @@ function Rent(props) {
               </p> */}
 
               <p>
-                <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
+                <strong>{t("phone")}:</strong> +998 (90) 996-51-02
               </p>
 
               <button
@@ -717,17 +717,17 @@ function Rent(props) {
 
             <input
               type="number"
-              placeholder={t("minPrice")}
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
+              placeholder={t("minArea")}
+              value={minArea}
+              onChange={(e) => setMinArea(e.target.value)}
               onWheel={handleNumberInputWheel}
             />
 
             <input
               type="number"
-              placeholder={t("maxPrice")}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
+              placeholder={t("maxArea")}
+              value={maxArea}
+              onChange={(e) => setMaxArea(e.target.value)}
               onWheel={handleNumberInputWheel}
             />
 

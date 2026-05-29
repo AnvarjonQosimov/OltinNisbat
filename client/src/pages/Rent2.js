@@ -39,8 +39,8 @@ function Rent(props) {
 
   const [userCards, setUserCards] = useState([]);
   const [search, setSearch] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minArea, setMinArea] = useState("");
+  const [maxArea, setMaxArea] = useState("");
   const [sortType, setSortType] = useState("new");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -80,14 +80,14 @@ function Rent(props) {
         card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
         card.additInformation?.toLowerCase().includes(search.toLowerCase());
 
-      const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
-      const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
+      const matchesMin = minArea ? card.totalarea >= Number(minArea) : true;
+      const matchesMax = maxArea ? card.totalarea <= Number(maxArea) : true;
 
       return matchesSearch && matchesMin && matchesMax;
     })
     .sort((a, b) => {
       if (sortType === "cheap") {
-        return a.price - b.price;
+        return a.totalarea - b.totalarea;
       }
 
       if (sortType === "popular") {
@@ -200,16 +200,16 @@ function Rent(props) {
 
           <input
             type="number"
-            placeholder={t("minPrice")}
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
+            placeholder={t("minArea")}
+            value={minArea}
+            onChange={(e) => setMinArea(e.target.value)}
           />
 
           <input
             type="number"
-            placeholder={t("maxPrice")}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
+            placeholder={t("maxArea")}
+            value={maxArea}
+            onChange={(e) => setMaxArea(e.target.value)}
           />
 
           <div className="sortButtons">
@@ -699,16 +699,16 @@ function Rent(props) {
 
             <input
               type="number"
-              placeholder={t("minPrice")}
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
+              placeholder={t("minArea")}
+              value={minArea}
+              onChange={(e) => setMinArea(e.target.value)}
             />
 
             <input
               type="number"
-              placeholder={t("maxPrice")}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
+              placeholder={t("maxArea")}
+              value={maxArea}
+              onChange={(e) => setMaxArea(e.target.value)}
             />
 
             <div className="sortButtons modalSort">
