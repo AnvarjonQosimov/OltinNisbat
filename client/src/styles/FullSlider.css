@@ -1,0 +1,159 @@
+/* Full Slider Styles */
+.fullSliderWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.mainSliderContainer {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.mainSlider {
+  width: 100%;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mainSwiperSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.fullSliderMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Custom Slider Buttons */
+.customSliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(3px);
+  z-index: 50;
+}
+
+.customSliderBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.customSliderBtnLeft {
+  left: 10px;
+}
+
+.customSliderBtnRight {
+  right: 10px;
+}
+
+/* Thumbs Slider */
+.thumbsSlider {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.thumbSwiperSlide {
+  width: 82px;
+  height: 62px;
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.thumbImage:hover {
+  opacity: 0.85;
+}
+
+.thumbSwiperSlide.swiper-slide-thumb-active .thumbImage {
+  opacity: 1;
+  border-color: #d2b586;
+}
+
+/* Scrollbar для thumbs */
+.thumbsSlider::-webkit-scrollbar {
+  height: 5px;
+}
+
+.thumbsSlider::-webkit-scrollbar-thumb {
+  background: rgba(210, 181, 134, 0.2);
+  border-radius: 20px;
+}
+
+.thumbsSlider::-webkit-scrollbar-thumb:hover {
+  background: rgba(210, 181, 134, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainSlider {
+    height: 350px;
+  }
+
+  .customSliderBtn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainSlider {
+    height: 300px;
+  }
+
+  .customSliderBtn {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .thumbSwiperSlide {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainSlider {
+    height: 250px;
+  }
+
+  .customSliderBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .thumbImage {
+    border-radius: 8px;
+  }
+}

@@ -4,6 +4,8 @@ import { CiHeart } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
 import Firebase from "../Firebase/Firebase.js";
 import Loading from "../components/Loading.js";
+import CardSlider from "../components/CardSlider.js";
+import FullSlider from "../components/FullSlider.js";
 import { TbRuler, TbRuler2Off } from "react-icons/tb";
 import { v4 as uuid } from "uuid";
 import { useContext, useState, useEffect } from "react";
@@ -11,7 +13,6 @@ import { LikeContext } from "../components/likedContext.js";
 import { IoMdHeart } from "react-icons/io";
 import axios from "axios";
 import "react-medium-image-zoom/dist/styles.css";
-import Zoom from "react-medium-image-zoom";
 
 function Rent(props) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -54,7 +55,6 @@ function Rent(props) {
     phoneNumber: "",
   });
   const [editId, setEditId] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState({});
   const [zoomImage, setZoomImage] = useState(null);
   const [fullCard, setFullCard] = useState(null);
 
@@ -186,7 +186,7 @@ function Rent(props) {
         className="darkToggle"
         onClick={() => setDarkMode((prev) => !prev)}
       >
-        {darkMode ? <TbRuler2Off /> : <TbRuler />}
+        {darkMode ? <TbRuler2Off /> : <TbRuler />
       </button> */}
 
       <div className="Rent_text">
@@ -251,75 +251,10 @@ function Rent(props) {
               <div className="card" key={card._id}>
                 <div className="rentVideo">
                   {card.media && card.media.length > 0 && (
-                    <div className="sliderContainer">
-                      {card.media.length > 1 && (
-                        <button
-                          className="sliderBtn left"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setCurrentSlide((prev) => ({
-                              ...prev,
-                              [card._id]:
-                                prev[card._id] > 0
-                                  ? prev[card._id] - 1
-                                  : card.media.length - 1,
-                            }));
-                          }}
-                        >
-                          ‹
-                        </button>
-                      )}
-
-                      <div
-                        className="sliderInner"
-                        style={{
-                          width: `${card.media.length * 100}%`,
-                          transform: `translateX(-${
-                            (currentSlide[card._id] || 0) * 100
-                          }%)`,
-                        }}
-                      >
-                        {card.media.map((file, index) => {
-                          const url = `http://localhost:8070/${file}`;
-
-                          return file.endsWith(".mp4") ||
-                            file.endsWith(".mov") ||
-                            file.endsWith(".avi") ? (
-                            <video
-                              key={index}
-                              src={url}
-                              controls
-                              className="slideItem"
-                            />
-                          ) : (
-                            <img
-                              key={index}
-                              src={url}
-                              className="slideItem"
-                              onClick={() => setZoomImage(url)}
-                            />
-                          );
-                        })}
-                      </div>
-
-                      {card.media.length > 1 && (
-                        <button
-                          className="sliderBtn right"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setCurrentSlide((prev) => ({
-                              ...prev,
-                              [card._id]:
-                                prev[card._id] < card.media.length - 1
-                                  ? prev[card._id] + 1
-                                  : 0,
-                            }));
-                          }}
-                        >
-                          ›
-                        </button>
-                      )}
-                    </div>
+                    <CardSlider 
+                      media={card.media} 
+                      onImageClick={setZoomImage}
+                    />
                   )}
                 </div>
 
@@ -571,71 +506,7 @@ function Rent(props) {
             className="fullModalContent topView"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="topSlider fade-wrapper">
-              {fullCard.media.length > 1 && (
-                <button
-                  className="arrow left"
-                  onClick={() =>
-                    setCurrentSlide((prev) => ({
-                      ...prev,
-                      full:
-                        (prev.full || 0) > 0
-                          ? prev.full - 1
-                          : fullCard.media.length - 1,
-                    }))
-                  }
-                >
-                  ‹
-                </button>
-              )}
-
-              <Zoom key={currentSlide.full || 0}>
-                <img
-                  src={`http://localhost:8070/${
-                    fullCard.media[currentSlide.full || 0]
-                  }`}
-                  className="topSliderImage fade-image"
-                  alt=""
-                />
-              </Zoom>
-
-              {fullCard.media.length > 1 && (
-                <button
-                  className="arrow right"
-                  onClick={() =>
-                    setCurrentSlide((prev) => ({
-                      ...prev,
-                      full:
-                        (prev.full || 0) < fullCard.media.length - 1
-                          ? prev.full + 1
-                          : 0,
-                    }))
-                  }
-                >
-                  ›
-                </button>
-              )}
-            </div>
-
-            {fullCard.media.length > 1 && (
-              <div className="thumbnailRow">
-                {fullCard.media.map((img, index) => (
-                  <img
-                    key={index}
-                    src={`http://localhost:8070/${img}`}
-                    className={`thumb ${
-                      index === (currentSlide.full || 0) ? "thumbActive" : ""
-                    }`}
-                    onClick={() =>
-                      setCurrentSlide((prev) => ({
-                        ...prev,
-                        full: index,
-                      }))
-                    }
-                  />
-                ))}
-              </div>
-            )}
+            <FullSlider media={fullCard.media} />
 
             <div className="topModalInfo">
               <h1>{fullCard.initInformation}</h1>
