@@ -1892,6 +1892,7 @@ h3 span {
 ========================= */
 
 .modalContent {
+  background-color: #181819 !important;
   width: 92%;
   max-width: 430px;
 
@@ -1901,7 +1902,7 @@ h3 span {
 
   padding: 24px;
 
-  border-radius: 22px;
+  border-radius: 16px !important;
 
   background:
     linear-gradient(
@@ -2131,7 +2132,7 @@ h3 span {
 }
 
 .topDescription {
-  color: rgba(150, 150, 150, 0.72);
+  color: rgba(206, 206, 206, 0.72);
 
   font-size: 14px;
 
@@ -2145,7 +2146,7 @@ h3 span {
 }
 
 .bottomDescription{
-  color: rgba(95, 95, 95, 0.72);
+  color: rgba(206, 206, 206, 0.72);
   padding-top: 10px;
 }
 
