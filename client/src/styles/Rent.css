@@ -711,7 +711,7 @@ h3 span {
 }
 
 .fullModalContent {
-  background: white;
+  background: #181819 !important;
   width: 80%;
   max-width: 900px;
   border-radius: 16px;
@@ -1198,7 +1198,6 @@ h3 span {
     margin-top: 16px;
   }
 }
-
 @media (max-width: 380px) {
   .topSlider {
     height: 200px;
@@ -2132,7 +2131,7 @@ h3 span {
 }
 
 .topDescription {
-  color: rgba(255,255,255,0.72);
+  color: rgba(150, 150, 150, 0.72);
 
   font-size: 14px;
 
@@ -2143,6 +2142,11 @@ h3 span {
 
 .topDescription strong {
   color: #d2b586;
+}
+
+.bottomDescription{
+  color: rgba(95, 95, 95, 0.72);
+  padding-top: 10px;
 }
 
 /* =========================

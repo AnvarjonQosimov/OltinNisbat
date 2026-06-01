@@ -522,7 +522,7 @@ function Rent(props) {
                 <strong>{t("price")}:</strong> {fullCard.price} $
               </p> */}
 
-              <p>
+              <p className="bottomDescription">
                 <strong>{t("phone")}:</strong> +998 (90) 996-51-02
               </p>
 
@@ -544,7 +544,7 @@ function Rent(props) {
         >
           <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
             <h2>{t("deleteconfirm")}</h2>
-            <p>{t("deleteP")}</p>
+            <p>{t("deleteP")}</p> 
 
             <div className="confirmButtons">
               <button
