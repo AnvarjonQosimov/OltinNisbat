@@ -202,13 +202,13 @@ function Header() {
             {t("contact")}
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/about"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
           >
             {t("about")}
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/aboutus"

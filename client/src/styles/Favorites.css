@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .Features{
     background-color: #181819;
     width: 100%;
@@ -282,7 +286,7 @@
 }
 
 @media (max-width: 400px) {
-  .card {
+  .cardF {
     width: 250px;
   }
 
@@ -290,8 +294,8 @@
     font-size: 45px;
   }
 
-  .card h1,
-  .card h2,
+  .cardF h1,
+  .cardF h2,
   .topDescription {
     font-size: 14px;
     line-height: 1.4;
@@ -305,7 +309,7 @@
 }
 
 @media (max-width: 360px) {
-  .card h1 {
+  .cardF h1 {
     font-size: 14px;
     line-height: 1.35;
   }
@@ -336,13 +340,14 @@
   justify-content: space-between;
 }
 
-.card {
+.cardF {
   cursor: pointer;
   border-radius: 16px;
   width: 400px;
   margin: 20px auto;
   background: linear-gradient(135deg, #2a2a2d 0%, #1e1e22 50%, #1a1a1f 100%);
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 0 0 20px 0;
   text-align: center;
@@ -356,7 +361,7 @@
 
 
 
-.card:hover {
+.cardF:hover {
   box-shadow: 0 30px 80px rgba(210, 181, 134, 0.25), 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border-color: rgba(210, 181, 134, 0.4);
 }
@@ -395,7 +400,7 @@
   margin: 20px 0 20px 50px;
 } */
 
-.card h1 {
+.cardF h1 {
   font-size: 26px;
   width: 90%;
   margin: 18px auto 10px;
@@ -414,7 +419,7 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.card p {
+.cardF p {
   text-align: center;
   color: #b8b8b8;
   font-size: 13px;
@@ -424,23 +429,12 @@
   letter-spacing: 0.2px;
 }
 
-.card-h2 {
+.cardF-h2 {
   max-width: 90% !important;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
-}
-
-.card h2 {
-  font-size: 19px;
-  width: 100%;
-  color: #e8d4a0;
-  font-weight: 700;
-  margin: 10px 0;
-  padding: 0 15px;
-  letter-spacing: 0.3px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* .rentcardline {
@@ -462,7 +456,7 @@ h3 span {
   letter-spacing: 0.3px;
 }
 
-.card h3:nth-of-type(1) {
+.cardF h3:nth-of-type(1) {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -474,14 +468,7 @@ h3 span {
   letter-spacing: 0.2px;
 }
 
-.phoneNum {
-  font-size: 16px;
-  color: #e8d4a0;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-}
-
-.card h3:nth-of-type(2) {
+.cardF h3:nth-of-type(2) {
   font-size: 15px;
   color: #b8b8b8;
   margin: 10px 0;
@@ -744,7 +731,7 @@ h3 span {
   transform: scale(1);
 }
 
-.card {
+.cardF {
   height: auto !important;
   min-height: 480px;
 }
@@ -1435,7 +1422,7 @@ h3 span {
 }
 
 @media (max-width: 400px) {
-  .card {
+  .cardF {
     width: 250px;
   }
 
@@ -1534,9 +1521,9 @@ h3 span {
   }
 }
 
-.card h1,
-.card h2,
-.card p,
+.cardF h1,
+.cardF h2,
+.cardF p,
 .fullModalText,
 .topDescription,
 .additional-info {
@@ -1547,8 +1534,8 @@ h3 span {
 }
 
 @media (max-width: 400px) {
-  .card h1,
-  .card h2,
+  .cardF h1,
+  .cardF h2,
   .topDescription {
     font-size: 14px;
     line-height: 1.4;
@@ -1560,7 +1547,7 @@ h3 span {
 }
 
 @media (max-width: 360px) {
-  .card h1 {
+  .cardF h1 {
     font-size: 14px;
     line-height: 1.35;
   }
@@ -1610,7 +1597,7 @@ h3 span {
   color: #b8cbbe;
 }
 
-.Rent.dark .card {
+.Rent.dark .cardF {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   color: #6c6c6c;
@@ -1803,10 +1790,10 @@ h3 span {
   color: white;
 } */
 
-.card h2 {
-  font-size: 16px;
+.cardF h2 {
+  font-size: 17px;
   width: 100%;
-  color: #bfa77a;
+  color: #8a7959 !important;
   /* font-weight: 600; */
 
   margin: 10px 0;
@@ -1822,17 +1809,19 @@ h3 span {
   font-family: "Inter", sans-serif;
 
   text-shadow: none;
+  font-weight: 700;
 }
 
 /* Такой же стиль как phoneNum */
 .phoneNum {
   font-size: 16px;
-  color: #d2b586;
+  color: #9e8e6a !important;
   font-weight: 600;
   letter-spacing: 0.35px;
   font-family: "Inter", sans-serif;
   display: flex;
   justify-content: center !important;
+  width: 100% !important;
 }
 
 /* Иконки */

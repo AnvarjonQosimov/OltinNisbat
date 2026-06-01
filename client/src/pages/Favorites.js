@@ -37,8 +37,6 @@ function Features() {
 
   const likedCards = cards.filter((c) => likedIds.includes(c._id));
 
-
-
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHeartClicked, setIsHeartClicked] = useState(false);
   const [isClickedHeart, setIsClickedHeart] = useState(true);
@@ -199,29 +197,105 @@ function Features() {
     };
   }, [isEditOpen, fullCard]);
 
+  const filteredLikedCards = likedCards
+  .filter((card) => {
+    const matchesSearch =
+      card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
+      card.additInformation?.toLowerCase().includes(search.toLowerCase()) ||
+      card.floor?.toString().includes(search.toLowerCase()) ||
+      card.totalarea?.toString().includes(search.toLowerCase()) ||
+      card.livingarea?.toString().includes(search.toLowerCase()) ||
+      card.rooms?.toString().includes(search.toLowerCase());
+
+    const matchesMin = minArea
+      ? Number(card.totalarea) >= Number(minArea)
+      : true;
+
+    const matchesMax = maxArea
+      ? Number(card.totalarea) <= Number(maxArea)
+      : true;
+
+    return matchesSearch && matchesMin && matchesMax;
+  })
+  .sort((a, b) => {
+    if (sortType === "cheap") {
+      return Number(a.price) - Number(b.price);
+    }
+
+    if (sortType === "popular") {
+      return (b.views || 0) - (a.views || 0);
+    }
+
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
   return (
     <div className="Features">
       <div className="features-text">
         <h1>{t("saralanganlar")}</h1>
       </div>
 
+      <div className="rentFiltersWrapper">
+        <button className="openFilterBtn" onClick={() => setIsFilterOpen(true)}>
+          {t("sort")}
+        </button>
+
+        <div className="rentFilters">
+          <input
+            type="text"
+            placeholder={t("search")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <input
+            type="number"
+            placeholder={t("minArea")} 
+            value={minArea}
+            onChange={(e) => setMinArea(e.target.value)}
+            onWheel={handleNumberInputWheel}
+          />
+
+          <input
+            type="number"
+            placeholder={t("maxArea")}
+            value={maxArea}
+            onChange={(e) => setMaxArea(e.target.value)}
+            onWheel={handleNumberInputWheel}
+          />
+
+          <div className="sortButtons">
+            <button
+              className={sortType === "new" ? "active" : ""}
+              onClick={() => setSortType("new")}
+            >
+              {t("newest")}
+            </button>
+
+            <button
+              className={sortType === "popular" ? "active" : ""}
+              onClick={() => setSortType("popular")}
+            >
+              {t("popular")}
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="features">
         <div className="cards">
-  {likedCards.map((card) => (
-              <div className="card" key={card._id}>
-                <div className="rentVideo">
-                  {card.media && card.media.length > 0 && (
-                    <CardSlider 
-                      media={card.media} 
-                      onImageClick={setZoomImage}
-                    />
-                  )}
-                </div>
+          {filteredLikedCards.map((card) => (
+            <div className="cardF" key={card._id}>
+              <div className="rentVideo">
+                {card.media && card.media.length > 0 && (
+                  <CardSlider media={card.media} onImageClick={setZoomImage} />
+                )}
+              </div>
 
-                <div className="lineee"></div>
+              <div className="lineee"></div>
 
-                  <div className="cardBottom">
-                    <h1>{card.initInformation}</h1>
+              <div className="cardBottom">
+                <h1>{card.initInformation}</h1>
 
                 <div className="rentcardline"></div>
 
@@ -277,33 +351,35 @@ function Features() {
                       }
                     }}
                   >
-                    {t("floors")}: {card.floor} <br/>  {t("totalarea")}: {card.totalarea} m² <br/> {t("livingarea")}: {card.livingarea} m² <br/> {t("rooms")}: {card.rooms}
+                    {t("floors")}: {card.floor} <br /> {t("totalarea")}:{" "}
+                    {card.totalarea} m² <br /> {t("livingarea")}:{" "}
+                    {card.livingarea} m² <br /> {t("rooms")}: {card.rooms}
                   </h2>
                 </div>
 
-              <div className="rentcardline" />
+                <div className="rentcardline" />
 
-              <h3>
-                {t("phonenumber")}: +998 (90) 996-51-02
-              </h3>
+                <h3 className="phoneNum">
+                  {t("phonenumber")}: +998 (90) 996-51-02
+                </h3>
 
-              <div className="rentcardline" ></div>
+                <div className="rentcardline"></div>
 
-              <div className="rentcardicons">
-                <i
-                  className="heartBrokenIcon"
-                  onClick={() => setConfirmUnlike(card._id)}
-                >
-                  <FaHeartBroken
-                    className={`hbIcon ${
-                      likedIds?.includes(card._id) ? "activeHB" : ""
-                    }`}
-                  />
-                </i>
+                <div className="rentcardicons">
+                  <i
+                    className="heartBrokenIcon"
+                    onClick={() => setConfirmUnlike(card._id)}
+                  >
+                    <FaHeartBroken
+                      className={`hbIcon ${
+                        likedIds?.includes(card._id) ? "activeHB" : ""
+                      }`}
+                    />
+                  </i>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
 
         {likedCards.length === 0 && (
@@ -332,10 +408,18 @@ function Features() {
 
               <p className="topDescription">{fullCard.additInformation}</p>
 
-              <p className="topDescription"><strong>{t("floors")}:</strong> {fullCard.floor}</p>
-              <p className="topDescription"><strong>{t("totalarea")}:</strong> {fullCard.totalarea} m²</p>
-              <p className="topDescription"><strong>{t("livingarea")}:</strong> {fullCard.livingarea} m²</p>
-              <p className="topDescription"><strong>{t("rooms")}:</strong> {fullCard.rooms}</p>
+              <p className="topDescription">
+                <strong>{t("floors")}:</strong> {fullCard.floor}
+              </p>
+              <p className="topDescription">
+                <strong>{t("totalarea")}:</strong> {fullCard.totalarea} m²
+              </p>
+              <p className="topDescription">
+                <strong>{t("livingarea")}:</strong> {fullCard.livingarea} m²
+              </p>
+              <p className="topDescription">
+                <strong>{t("rooms")}:</strong> {fullCard.rooms}
+              </p>
 
               {/* <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
