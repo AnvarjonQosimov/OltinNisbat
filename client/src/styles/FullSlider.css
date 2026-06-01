@@ -54,6 +54,7 @@
   transition: all 0.2s ease;
   backdrop-filter: blur(3px);
   z-index: 50;
+  padding-bottom: 7px;
 }
 
 .customSliderBtn:hover {
@@ -62,10 +63,12 @@
 
 .customSliderBtnLeft {
   left: 10px;
+  padding-right: 2px;
 }
 
 .customSliderBtnRight {
   right: 10px;
+  padding-left: 2px;
 }
 
 /* Thumbs Slider */
