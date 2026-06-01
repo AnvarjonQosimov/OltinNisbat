@@ -136,17 +136,6 @@ function Header() {
             {t("home")}
           </Link>
         </li>
-        <li>
-          <Link className="li" to={"/about"}>
-            {t("about")}
-          </Link>
-        </li>
-
-        <li>
-          <Link className="li" to={"/aboutus"}>
-            {t("aboutus")}
-          </Link>
-        </li>
 
         <li>
           <Link className="li" to={"/rent"}>
@@ -161,6 +150,18 @@ function Header() {
         <li>
           <Link className="li" to={"/contact"}>
             {t("contact")}
+          </Link>
+        </li>
+
+        {/* <li>
+          <Link className="li" to={"/about"}>
+            {t("about")}
+          </Link>
+        </li> */}
+
+        <li>
+          <Link className="li" to={"/aboutus"}>
+            {t("aboutus")}
           </Link>
         </li>
       </div>
@@ -186,22 +187,6 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/about"
-            onClick={() => setBurgerOpen(false)}
-            className="menu-link"
-          >
-            {t("about")}
-          </NavLink>
-
-          <NavLink
-            to="/aboutus"
-            onClick={() => setBurgerOpen(false)}
-            className="menu-link"
-          >
-            {t("aboutus")}
-          </NavLink>
-
-          <NavLink
             to="/rent"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
@@ -215,6 +200,22 @@ function Header() {
             className="menu-link"
           >
             {t("contact")}
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            onClick={() => setBurgerOpen(false)}
+            className="menu-link"
+          >
+            {t("about")}
+          </NavLink>
+
+          <NavLink
+            to="/aboutus"
+            onClick={() => setBurgerOpen(false)}
+            className="menu-link"
+          >
+            {t("aboutus")}
           </NavLink>
         </div>
       </div>

@@ -765,6 +765,7 @@ h3 span {
   font-size: 15px;
   cursor: pointer;
   margin-top: 10px;
+  transition: 0.3s !important;
 }
 
 .closeFullBtn:hover {

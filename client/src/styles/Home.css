@@ -128,20 +128,6 @@ a{
   animation: circleho 1.5s alternate infinite;
 }
 
-.home-link {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.home-link img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  z-index: 10;
-}
-
 @keyframes circleh {
   from {
     height: 130px;
@@ -170,6 +156,20 @@ a{
     border-radius: 50%;
     box-shadow: 10px 5px 70px inset rgb(160, 160, 160);
   }
+}
+
+.home-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-link img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  z-index: 10;
 }
 
 @media (max-width: 1300px){

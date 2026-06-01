@@ -3,10 +3,11 @@ import "../styles/Favorites.css";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { LikeContext } from "../components/likedContext";
-import { IoMdHeart } from "react-icons/io";
 import { FaHeartBroken } from "react-icons/fa";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import CardSlider from "../components/CardSlider";
+import FullSlider from "../components/FullSlider";
 
 function Features() {
   const { likedIds, toggleLike } = useContext(LikeContext);
@@ -36,6 +37,168 @@ function Features() {
 
   const likedCards = cards.filter((c) => likedIds.includes(c._id));
 
+
+
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isHeartClicked, setIsHeartClicked] = useState(false);
+  const [isClickedHeart, setIsClickedHeart] = useState(true);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("rentDarkMode") === "true";
+  });
+  const adminEmailMain = "oltinnisbatarch@gmail.com";
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const authUser = localStorage.getItem("userEmail");
+    if (authUser) {
+      setCurrentUser(authUser);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("rentDarkMode", darkMode);
+  }, [darkMode]);
+
+  const [userCards, setUserCards] = useState([]);
+  const [search, setSearch] = useState("");
+  const [minArea, setMinArea] = useState("");
+  const [maxArea, setMaxArea] = useState("");
+  const [sortType, setSortType] = useState("new");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editData, setEditData] = useState({
+    initInformation: "",
+    additInformation: "",
+    floor: "",
+    totalarea: "",
+    livingarea: "",
+    rooms: "",
+    price: "",
+    phoneNumber: "",
+  });
+  const [editId, setEditId] = useState(null);
+
+  const handleNumberInputWheel = (e) => {
+    e.preventDefault();
+  };
+
+  const fetchCards = async () => {
+    try {
+      const response = await axios.get("http://localhost:8070/api/post/get");
+      setUserCards(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCards();
+  }, []);
+
+  const filteredCards = userCards
+    .filter((card) => {
+      const matchesSearch =
+        card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
+        card.additInformation?.toLowerCase().includes(search.toLowerCase()) ||
+        card.floor?.toString().includes(search.toLowerCase()) ||
+        card.totalarea?.toString().includes(search.toLowerCase()) ||
+        card.livingarea?.toString().includes(search.toLowerCase()) ||
+        card.rooms?.toString().includes(search.toLowerCase());
+
+      const matchesMin = minArea ? card.totalarea >= Number(minArea) : true;
+      const matchesMax = maxArea ? card.totalarea <= Number(maxArea) : true;
+
+      return matchesSearch && matchesMin && matchesMax;
+    })
+    .sort((a, b) => {
+      if (sortType === "cheap") {
+        return a.price - b.price;
+      }
+
+      if (sortType === "popular") {
+        return (b.views || 0) - (a.views || 0);
+      }
+
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+  const heartClicked = () => {
+    setIsClickedHeart((prev) => !prev);
+    setIsHeartClicked((prev) => !prev);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8070/api/post/delete/${id}`);
+      setUserCards((prev) => prev.filter((card) => card._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleEdit = (card) => {
+    setEditData({
+      initInformation: card.initInformation,
+      additInformation: card.additInformation,
+      floor: card.floor,
+      totalarea: card.totalarea,
+      livingarea: card.livingarea,
+      rooms: card.rooms,
+      price: card.price,
+      phoneNumber: card.phoneNumber,
+    });
+    setEditId(card._id);
+    setIsEditOpen(true);
+  };
+
+  const saveEdit = async () => {
+    try {
+      await axios.put(
+        `http://localhost:8070/api/post/edit/${editId}`,
+        editData,
+      );
+
+      setUserCards((prev) =>
+        prev.map((card) =>
+          card._id === editId ? { ...card, ...editData } : card,
+        ),
+      );
+
+      setIsEditOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (isEditOpen) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          saveEdit();
+        }
+
+        if (e.key === "Escape") {
+          setIsEditOpen(false);
+        }
+      }
+
+      if (fullCard && e.key === "Escape") {
+        setFullCard(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [isEditOpen, fullCard]);
+
   return (
     <div className="Features">
       <div className="features-text">
@@ -44,107 +207,87 @@ function Features() {
 
       <div className="features">
         <div className="cards">
-          {likedCards.map((card) => (
-            <div className="card" key={card._id}>
-              <div className="rentVideo">
-                {card.media && card.media.length > 0 && (
-                  <div className="sliderContainer">
-                    {card.media.length > 1 && (
-                      <button
-                        className="sliderBtn left"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide((prev) => ({
-                            ...prev,
-                            [card._id]:
-                              (prev[card._id] || 0) > 0
-                                ? prev[card._id] - 1
-                                : card.media.length - 1,
-                          }));
-                        }}
-                      >
-                        ‹
-                      </button>
-                    )}
+  {likedCards.map((card) => (
+              <div className="card" key={card._id}>
+                <div className="rentVideo">
+                  {card.media && card.media.length > 0 && (
+                    <CardSlider 
+                      media={card.media} 
+                      onImageClick={setZoomImage}
+                    />
+                  )}
+                </div>
 
-                    <div
-                      className="sliderInner"
-                      style={{
-                        width: `${card.media.length * 100}%`,
-                        transform: `translateX(-${
-                          (currentSlide[card._id] || 0) * 100
-                        }%)`,
-                      }}
-                    >
-                      {card.media.map((file, index) => {
-                        const url = `http://localhost:8070/${file}`;
-                        return file.endsWith(".mp4") ||
-                          file.endsWith(".mov") ||
-                          file.endsWith(".avi") ? (
-                          <video
-                            key={index}
-                            src={url}
-                            controls
-                            className="slideItem"
-                          />
-                        ) : (
-                          <img
-                            key={index}
-                            src={url}
-                            className="slideItem"
-                            onClick={() => setZoomImage(url)}
-                          />
+                <div className="lineee"></div>
+
+                  <div className="cardBottom">
+                    <h1>{card.initInformation}</h1>
+
+                <div className="rentcardline"></div>
+
+                {/* <div className="card-h2">
+                  <h2
+                    className="short-text"
+                    onClick={async () => {
+                      setFullCard(card);
+
+                      try {
+                        await axios.put(
+                          `http://localhost:8070/api/post/view/${card._id}`,
                         );
-                      })}
-                    </div>
 
-                    {card.media.length > 1 && (
-                      <button
-                        className="sliderBtn right"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide((prev) => ({
-                            ...prev,
-                            [card._id]:
-                              (prev[card._id] || 0) < card.media.length - 1
-                                ? prev[card._id] + 1
-                                : 0,
-                          }));
-                        }}
-                      >
-                        ›
-                      </button>
-                    )}
-                  </div>
-                )}
-              </div>
+                        setUserCards((prev) =>
+                          prev.map((c) =>
+                            c._id === card._id
+                              ? { ...c, views: (c.views || 0) + 1 }
+                              : c,
+                          ),
+                        );
+                      } catch (e) {
+                        console.log(e);
+                      }
+                    }}
+                  >
+                    {card.additInformation.length > 43
+                      ? card.additInformation.slice(0, 43) + "..."
+                      : card.additInformation}
+                  </h2>
+                </div> */}
 
-              <div className="lineee" />
+                <div className="card-h2">
+                  <h2
+                    className="short-text"
+                    onClick={async () => {
+                      setFullCard(card);
 
-              <h1>{card.initInformation}</h1>
+                      try {
+                        await axios.put(
+                          `http://localhost:8070/api/post/view/${card._id}`,
+                        );
 
-              <div className="rentcardline" />
-
-              <h2 className="short-text" onClick={() => setFullCard(card)}>
-                {card.additInformation.length > 43
-                  ? card.additInformation.slice(0, 43) + "..."
-                  : card.additInformation}
-              </h2>
-
-              <div className="rentcardline" />
-
-              <h3 className="price">
-                {t("price")}: {card.price} $<div className="priceline" />
-                <span>{t("oyiga")}</span>
-              </h3>
+                        setUserCards((prev) =>
+                          prev.map((c) =>
+                            c._id === card._id
+                              ? { ...c, views: (c.views || 0) + 1 }
+                              : c,
+                          ),
+                        );
+                      } catch (e) {
+                        console.log(e);
+                      }
+                    }}
+                  >
+                    {t("floors")}: {card.floor} <br/>  {t("totalarea")}: {card.totalarea} m² <br/> {t("livingarea")}: {card.livingarea} m² <br/> {t("rooms")}: {card.rooms}
+                  </h2>
+                </div>
 
               <div className="rentcardline" />
 
               <h3>
-                {t("phonenumber")}: +{card.phoneNumber}
+                {t("phonenumber")}: +998 (90) 996-51-02
               </h3>
 
-              <div className="rentcardline" />
+              <div className="rentcardline" ></div>
 
               <div className="rentcardicons">
                 <i
@@ -159,7 +302,8 @@ function Features() {
                 </i>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
         </div>
 
         {likedCards.length === 0 && (
@@ -181,83 +325,24 @@ function Features() {
             className="fullModalContent topView"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="topSlider fade-wrapper">
-              {fullCard.media.length > 1 && (
-                <button
-                  className="arrow left"
-                  onClick={() =>
-                    setCurrentSlide((prev) => ({
-                      ...prev,
-                      full:
-                        (prev.full || 0) > 0
-                          ? prev.full - 1
-                          : fullCard.media.length - 1,
-                    }))
-                  }
-                >
-                  ‹
-                </button>
-              )}
-
-              <Zoom>
-                <img
-                  src={`http://localhost:8070/${
-                    fullCard.media[currentSlide.full || 0]
-                  }`}
-                  className="topSliderImage fade-image"
-                  key={currentSlide.full}
-                  alt=""
-                />
-              </Zoom>
-
-              {fullCard.media.length > 1 && (
-                <button
-                  className="arrow right"
-                  onClick={() =>
-                    setCurrentSlide((prev) => ({
-                      ...prev,
-                      full:
-                        (prev.full || 0) < fullCard.media.length - 1
-                          ? prev.full + 1
-                          : 0,
-                    }))
-                  }
-                >
-                  ›
-                </button>
-              )}
-            </div>
-
-            {fullCard.media.length > 1 && (
-              <div className="thumbnailRow">
-                {fullCard.media.map((img, index) => (
-                  <img
-                    key={index}
-                    src={`http://localhost:8070/${img}`}
-                    className={`thumb ${
-                      index === (currentSlide.full || 0) ? "thumbActive" : ""
-                    }`}
-                    onClick={() =>
-                      setCurrentSlide((prev) => ({
-                        ...prev,
-                        full: index,
-                      }))
-                    }
-                  />
-                ))}
-              </div>
-            )}
+            <FullSlider media={fullCard.media} />
 
             <div className="topModalInfo">
               <h1>{fullCard.initInformation}</h1>
 
               <p className="topDescription">{fullCard.additInformation}</p>
 
-              <p>
+              <p className="topDescription"><strong>{t("floors")}:</strong> {fullCard.floor}</p>
+              <p className="topDescription"><strong>{t("totalarea")}:</strong> {fullCard.totalarea} m²</p>
+              <p className="topDescription"><strong>{t("livingarea")}:</strong> {fullCard.livingarea} m²</p>
+              <p className="topDescription"><strong>{t("rooms")}:</strong> {fullCard.rooms}</p>
+
+              {/* <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
-              </p>
-              <p>
-                <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
+              </p> */}
+
+              <p className="bottomDescription">
+                <strong>{t("phone")}:</strong> +998 (90) 996-51-02
               </p>
 
               <button
