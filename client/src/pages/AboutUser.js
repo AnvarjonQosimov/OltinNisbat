@@ -16,6 +16,8 @@ function AboutUser() {
     return () => unsubscribe();
   }, []);
 
+// console.log(user?.photoURL);
+
   return (
     <div className="AboutUser">
       <div className="aboutUserCard">
