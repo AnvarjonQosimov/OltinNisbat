@@ -52,6 +52,7 @@
 
 .homeStatistics h2{
   color: rgb(150, 150, 150);
+  font-size: 25px;
 }
 
 .home_left h1 {
@@ -348,13 +349,37 @@ a{
 
   .home_left{
     display: flex;
-    position: fixed;
+    position: relative;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding-top: 180px;
+    padding-bottom: 20px !important;
     padding-left: 50px;
+  }
+
+  .homeStatistics{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -175px;
+    max-height: 100px;
+    margin-right: 220px;
+  }
+
+  .homelefttext1{
+    margin-right: 100px !important;
+  }
+
+  .linktorentbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    margin-right: 100px;
+    z-index: 1;
+    position: relative;
   }
 
   .home_right{
@@ -364,6 +389,8 @@ a{
     justify-content: center;
     width: 100%;
     height: 100%;
+    margin-left: -45px !important;
+    margin-top: -50px;
   }
 
   .home_left h1{
@@ -384,7 +411,7 @@ a{
 
 @media (max-width: 555px){
   .home_left h1{
-    font-size: 23px;
+    font-size: 23px !important;
   }
 }
 
@@ -402,19 +429,19 @@ a{
 
 @media (max-width: 515px){
   .home_left h1{
-    font-size: 20px;
+    font-size: 20px !important;
   }
 }
 
 @media (max-width: 500px){
   .home_left h1{
     font-size: 22px;
-    margin-left: -15px;
+    /* margin-left: -15px; */
   }
 
-  .home_right{
+  /* .home_right{
     margin-left: -20px;
-  }
+  } */
 }
 
 @media (max-width: 496px){
@@ -428,6 +455,10 @@ a{
   .home_left h1{
     font-size: 20px;
   }
+
+  .homeStatistics{
+    width: 90% !important;
+  }
 }
 
 @media (max-width: 558px){
@@ -436,10 +467,20 @@ a{
   }
 }
 
-@media (max-width: 444px){
+@media(max-width: 450px){
   .home_left h1{
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 444px){
+  .homelefttext1 {
     font-size: 17px;
-    margin-left: -20px;
+    margin-left: 20px !important;
+  }
+
+  .linktorentbtn{
+    margin-left: 20px !important;
   }
 
   .home_right{
@@ -448,9 +489,20 @@ a{
 }
 
 @media (max-width: 428px){
+  .homeStatistics{
+    width: 97% !important;
+  }
+}
+
+@media(max-width: 425px){
+  .linktorentbtn button{
+    padding: 8px 35px !important;
+  }
+}
+
+@media(max-width: 412px){
   .home_left h1{
-    font-size: 17px;
-    margin-left: 10px;
+    font-size: 17px !important;
   }
 }
 
@@ -465,9 +517,34 @@ a{
   }
 }
 
+@media (max-width: 400px){
+  .homeStatistics{
+    width: 100% !important;
+    padding: 15px 30px !important;
+  }
+}
+
+@media(max-width: 394px){
+  .home_left h1{
+    font-size: 16px !important;
+  }
+}
+
 @media (max-width: 390px){
   .home_left h1{
     font-size: 15.5px;
+  }
+}
+
+@media (max-width: 380px){
+  .homeStatistics{
+    padding: 15px 25px !important;
+  }
+}
+
+@media (max-width: 374px){
+  .home_left h1{
+    font-size: 15px !important;
   }
 }
 
@@ -475,13 +552,34 @@ a{
   .home_left h1{
     font-size: 15px;
   }
+
+  .homeStatistics h2{
+    font-size: 17px !important;
+  }
+}
+
+@media (max-width: 355px){
+  .home_left h1{
+    font-size: 14px !important;
+  }
 }
 
 @media (max-width: 350px){
   .home_left h1{
     font-size: 14px;
     width: 100%;
-    margin-left: -25px;
+  }
+}
+
+@media (max-width: 330px){
+  .homeStatistics h2{
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 320px){
+  .homeStatistics h2{
+    font-size: 14px !important;
   }
 }
 
@@ -496,6 +594,12 @@ a{
   }
 }
 
+@media (max-width: 309px){
+  .home_left h1{
+    font-size: 13px !important;
+  }
+}
+
 @media (max-width: 295px){
   .home_left h1{
     font-size: 12px;
@@ -503,5 +607,52 @@ a{
 
   .home_right{
     margin-left: -20px;
+  }
+}
+
+@media(max-width: 1125px){
+  .homeStatistics{
+    padding: 15px 45px;
+  }
+
+  .homeStatistics h2{
+    font-size: 23px;
+  }
+}
+
+@media(max-width: 1050px){
+  .homeStatistics{
+    padding: 15px 40px;
+  }
+
+  .homeStatistics h2{
+    font-size: 21px;
+  }
+}
+
+@media(max-width: 960px){
+  .homeStatistics{
+    padding: 15px 35px;
+  }
+
+  .homeStatistics h2{
+    font-size: 19px;
+  }
+}
+
+@media(max-width: 860px){
+  .homeStatistics{
+    width: 70%;
+  }
+}
+
+@media(max-width: 800px){
+  .homeStatistics{
+    width: 80%;
+    margin-left: 150px;
+  }
+
+  .stIc{
+    margin-left: -10px !important;
   }
 }
