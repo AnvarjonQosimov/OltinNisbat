@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .Rent {
   background-color: #181819;
   /* background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%); */
@@ -19,6 +23,7 @@
   cursor: pointer;
   border-radius: 16px;
   width: 400px;
+  /* width: min(400px, 100%); */
   margin: 20px auto;
   background: linear-gradient(135deg, #2a2a2d 0%, #1e1e22 50%, #1a1a1f 100%);
   display: flex;
@@ -965,7 +970,7 @@ h3 span {
   width: 80%;
   max-width: 900px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 4px !important;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -1097,27 +1102,9 @@ h3 span {
   background: #d3d3d3;
 }
 
-@media (max-width: 807px) {
-  .sliderBtn.left {
-    height: 50px;
-    width: 50px !important;
-    font-size: 24px;
-    padding: 15px 0 20px 0;
-  }
 
-  .topSlider .arrow {
-    height: 50px;
-    width: 50px !important;
-    font-size: 24px;
-    padding: 15px 0 20px 0;
-  }
-}
 
 @media (max-width: 400px) {
-  .card {
-    width: 250px;
-  }
-
   .Rent_text h1 {
     font-size: 45px;
   }
