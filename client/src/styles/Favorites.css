@@ -636,7 +636,7 @@ h3 span {
   background: #ffffff;
   padding: 25px;
   width: 360px;
-  border-radius: 10px;
+  border-radius: 5px !important;
   display: flex;
   flex-direction: column;
   gap: 12px;

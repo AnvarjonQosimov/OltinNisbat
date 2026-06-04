@@ -333,7 +333,7 @@ h3 span {
   background: #ffffff;
   padding: 25px;
   width: 360px;
-  border-radius: 10px;
+  border-radius: 5px !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -2218,5 +2218,85 @@ h3 span {
 
   .closeFullBtn {
     width: 100%;
+  }
+}
+
+@media(max-width: 1270px){
+  .cards{
+    padding: 70px 50px 0 50px !important;
+    display: flex;
+    justify-content: space-between !important;
+  }
+
+  .card{
+    width: 350px !important;
+  }
+}
+
+@media(max-width: 1025px){
+  .crads{
+    padding: 70px 30px 0 30px !important;
+  }
+
+  .card{
+    width: 300px !important;
+  }
+
+  .phoneNum{
+    font-size: 14px !important;
+ }
+}
+
+@media(max-width: 770px){
+  .cards{
+    padding: 70px 10px 0 10px !important;
+  }
+
+  .card{
+    width: 260px !important;
+    height: 525px !important;
+  }
+
+  .cardBottom{
+    position: absolute;
+    margin-top: 190px;
+    margin-left: 13px;
+  }
+
+  .card h1{
+    font-size: 23px !important;
+  }
+
+  .card h2{
+    font-size: 15px !important;
+  }
+
+  .phoneNum{
+    font-size: 12px !important;
+  }
+
+  .rentcardicons{
+    width: 100% !important;
+    justify-content: space-between;
+    margin: 0 0 0 10px !important;
+  }
+
+  .rentcardicons button{
+    padding: 7px 10px !important;
+  }
+
+  .editBtn{
+    margin-right: -5px !important;
+    padding: 7px 10px !important;
+  }
+
+  .deleteBtn{
+    padding: 7px 10px !important;
+  }
+
+  .likeIcon{
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 7px !important;
   }
 }
