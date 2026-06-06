@@ -256,6 +256,10 @@
 }
 
 @media (max-width: 400px){
+  .userItem p{
+    font-size: 13px;
+  }
+
   .cardsList{
     margin-left: -10px;
   }
@@ -266,6 +270,10 @@
 }
 
 @media (max-width: 385px){
+  .userItem p{
+    font-size: 11px;
+  }
+
   .cardsList{
     margin-left: -15px;
   }
@@ -290,6 +298,10 @@
 }
 
 @media (max-width: 350px){
+  .userItem p{
+    font-size: 10px;
+  }
+
   .cardsList{
     margin-left: -35px;
   }
