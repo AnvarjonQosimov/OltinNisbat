@@ -27,6 +27,14 @@ function Contact() {
           </span>{" "}
           +998(90)-996-51-02
         </a>
+
+        <a href="tel:+998992820220">
+          <span>
+            <FaPhoneAlt />
+          </span>{" "}
+          +998(99)-282-02-20
+        </a>
+
         <a href="https://t.me/@OLTIN_NISBAT_architecture">
           <span>
             <FaTelegram />
