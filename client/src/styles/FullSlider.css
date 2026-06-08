@@ -13,8 +13,8 @@
 }
 
 .mainSlider {
-  width: 50%;
-  height: 420px;
+  width: 70%;
+  height: 500px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -26,6 +26,8 @@
   width: 100%;
   height: 100%;
   background: #000;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .fullSliderMedia {
@@ -61,6 +63,8 @@
   backdrop-filter: blur(3px);
   z-index: 50;
   padding-bottom: 7px;
+  position: absolute !important;
+  z-index: 1000 !important;
 }
 
 .customSliderBtn:hover {
@@ -193,14 +197,21 @@
   }
 }
 
+@media (max-width: 620px) {
+  .mainSlider{
+    width: 95%;
+  }
+}
+
 @media (max-width: 480px) {
   .mainSlider {
     height: 250px;
+    width: 100%;
   }
 
   .customSliderBtn {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     font-size: 16px;
   }
 

@@ -443,8 +443,6 @@ h3 span {
   transform: scale(1);
 }
 
-
-
 .modalContent {
   background-color: #181819 !important;
   width: 92%;
@@ -574,7 +572,7 @@ h3 span {
 
 @media (max-width: 400px) {
   .card {
-    width: 250px;
+    width: 260px;
   }
 
   .Rent2_text h1 {
@@ -711,7 +709,7 @@ h3 span {
 }
 
 @media (max-width: 400px) {
-  .card h1,
+  .card h1, 
   .card h2,
   .topDescription {
     font-size: 14px;

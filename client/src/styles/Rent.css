@@ -2260,7 +2260,7 @@ h3 span {
   .cardBottom{
     position: absolute;
     margin-top: 190px;
-    margin-left: 13px;
+    margin-left: 10px !important;
   }
 
   .card h1{
@@ -2278,25 +2278,55 @@ h3 span {
   .rentcardicons{
     width: 100% !important;
     justify-content: space-between;
-    margin: 0 0 0 10px !important;
+  }
+
+  .rentcardicons button, i {
+    margin-left: 0px !important;
   }
 
   .rentcardicons button{
     padding: 7px 10px !important;
   }
-
   .editBtn{
     margin-right: -5px !important;
     padding: 7px 10px !important;
   }
-
   .deleteBtn{
     padding: 7px 10px !important;
   }
-
   .likeIcon{
     width: 40px !important;
     height: 40px !important;
     font-size: 7px !important;
+  }
+}
+
+@media(max-width: 403px){
+  .bottomDescription{
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 364px){
+  .bottomDescription{
+    font-size: 13px;
+  }
+}
+
+@media(max-width: 346px){
+  .bottomDescription{
+    font-size: 12px;
+  }
+}
+
+@media(max-width: 328px){
+  .bottomDescription{
+    font-size: 11px;
+  }
+}
+
+@media(max-width: 310px){
+  .bottomDescription{
+    font-size: 10px;
   }
 }
