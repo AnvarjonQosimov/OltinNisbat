@@ -2268,7 +2268,8 @@ h3 span {
   }
 
   .card h2{
-    font-size: 15px !important;
+    font-size: 13px !important;
+    line-height: 25px !important;
   }
 
   .phoneNum{

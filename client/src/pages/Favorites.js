@@ -294,7 +294,7 @@ function Features() {
 
               <div className="lineee"></div>
 
-              <div className="cardBottom">
+              <div className="cardFBottom">
                 <h1>{card.initInformation}</h1>
 
                 <div className="rentcardline"></div>
@@ -365,7 +365,7 @@ function Features() {
 
                 <div className="rentcardline"></div>
 
-                <div className="rentcardicons">
+                <div className="rentcardFicons">
                   <i
                     className="heartBrokenIcon"
                     onClick={() => setConfirmUnlike(card._id)}
