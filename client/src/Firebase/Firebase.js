@@ -1,14 +1,16 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC5IT1qTLATicYwbd4cBjP0Lj9RZiWBTKY",
-  authDomain: "login-ea634.firebaseapp.com",
-  projectId: "login-ea634",
-  storageBucket: "login-ea634.firebasestorage.app",
-  messagingSenderId: "548000421830",
-  appId: "1:548000421830:web:94be3a84edcbdc2a8e44c7"
+  apiKey: "AIzaSyD5HR_UZ6o4XceF9pQ8nuzbFc8LTBMzyZI",
+  authDomain: "oltinnisbatlogin.firebaseapp.com",
+  projectId: "oltinnisbatlogin",
+  storageBucket: "oltinnisbatlogin.firebasestorage.app",
+  messagingSenderId: "58897396427",
+  appId: "1:58897396427:web:d2fe6568de87a15a8d614e",
+  measurementId: "G-JWW28QS24W"
 };
 
 function Firebase() {
@@ -19,6 +21,7 @@ const app = Firebase();
 const db = getFirestore(app)
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
+const analytics = getAnalytics(app);
 
 export default Firebase
 export {db}
