@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD5HR_UZ6o4XceF9pQ8nuzbFc8LTBMzyZI",
-  authDomain: "oltinnisbatlogin.firebaseapp.com",
-  projectId: "oltinnisbatlogin",
-  storageBucket: "oltinnisbatlogin.firebasestorage.app",
-  messagingSenderId: "58897396427",
-  appId: "1:58897396427:web:d2fe6568de87a15a8d614e",
-  measurementId: "G-JWW28QS24W"
+  apiKey: "AIzaSyCM71imi-1tbCZhSmxpbMmcV5MyJCagHes",
+  authDomain: "oltinnisbatlogin-3deba.firebaseapp.com",
+  projectId: "oltinnisbatlogin-3deba",
+  storageBucket: "oltinnisbatlogin-3deba.firebasestorage.app",
+  messagingSenderId: "755493298909",
+  appId: "1:755493298909:web:ceebf5768a7eedfc1d7134",
+  measurementId: "G-5RGZDZQ071"
 };
 
 function Firebase() {
