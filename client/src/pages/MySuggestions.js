@@ -299,6 +299,7 @@ function MySuggestions(props) {
                               key={index}
                               src={url}
                               className="slideItem"
+                              alt=""
                               onClick={() => setZoomImage(url)}
                             />
                           );
@@ -535,7 +536,7 @@ function MySuggestions(props) {
 
       {zoomImage && (
         <div className="zoomOverlay" onClick={() => setZoomImage(null)}>
-          <img src={zoomImage} className="zoomFull" />
+          <img src={zoomImage} className="zoomFull" alt="" />
         </div>
       )}
 
@@ -597,6 +598,7 @@ function MySuggestions(props) {
                   <img
                     key={index}
                     src={`http://localhost:8070/${img}`}
+                    alt=""
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}

@@ -496,7 +496,7 @@ function Rent(props) {
 
       {zoomImage && (
         <div className="zoomOverlay" onClick={() => setZoomImage(null)}>
-          <img src={zoomImage} className="zoomFull" />
+          <img src={zoomImage} className="zoomFull" alt="" />
         </div>
       )}
 
