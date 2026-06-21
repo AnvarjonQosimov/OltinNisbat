@@ -433,7 +433,7 @@ function MySuggestions(props) {
               }
             />
 
-            <label>{t("flloor")}}</label>
+            <label>{t("flloor")}</label>
             <input
               type="number"
               value={editData.floor}
@@ -446,7 +446,7 @@ function MySuggestions(props) {
               onWheel={handleNumberInputWheel}
             />
 
-            <label>{t("totalarea")}}</label>
+            <label>{t("totalarea")}</label>
             <input
               type="number"
               value={editData.totalarea}
@@ -459,7 +459,7 @@ function MySuggestions(props) {
               onWheel={handleNumberInputWheel}
             />
 
-            <label>{t("livingarea")}}</label>
+            <label>{t("livingarea")}</label>
             <input
               type="number"
               value={editData.livingarea}
@@ -472,7 +472,7 @@ function MySuggestions(props) {
               onWheel={handleNumberInputWheel}
             />
 
-            <label>{t("rooms")}}</label>
+            <label>{t("rooms")}</label>
             <input
               type="number"
               value={editData.rooms}
