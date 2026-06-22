@@ -29,7 +29,7 @@ function CardSlider({ media, onImageClick }) {
         autoHeight={false}
       >
         {media.map((file, index) => {
-          const url = `http://localhost:8070/${file}`;
+          const url = `https://oltinnisbat.onrender.com/${file}`;
           const isVideo = file.endsWith(".mp4") || file.endsWith(".mov") || file.endsWith(".avi");
 
           return (

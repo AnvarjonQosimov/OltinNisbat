@@ -41,7 +41,7 @@ function FullSlider({ media }) {
             loop={hasMultiple}
           >
             {media.map((file, index) => {
-              const url = `http://localhost:8070/${file}`;
+              const url = `https://oltinnisbat.onrender.com/${file}`;
               const isVideo = file.endsWith(".mp4") || file.endsWith(".mov") || file.endsWith(".avi");
 
               return (
@@ -84,7 +84,7 @@ function FullSlider({ media }) {
             {media.map((file, index) => (
               <SwiperSlide key={index} className="thumbSwiperSlide">
                 <img
-                  src={`http://localhost:8070/${file}`}
+                  src={`https://oltinnisbat.onrender.com/${file}`}
                   alt={`Thumb ${index}`}
                   className="thumbImage"
                 />

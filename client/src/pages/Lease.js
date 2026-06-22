@@ -81,7 +81,7 @@ function Lease() {
         formData.append("media", file);
       }
 
-      await axios.post("http://localhost:8070/api/post/create", formData, {
+      await axios.post("https://oltinnisbat.onrender.com/api/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

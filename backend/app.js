@@ -44,7 +44,7 @@ const connectWithRetry = async (retries = 5, delayMs = 5000) => {
         family: 4
       })
       console.log('DB connected')
-      app.listen(PORT_ENV, () => console.log(`Listen to -- http://localhost:${PORT_ENV}`))
+      app.listen(PORT_ENV, () => console.log(`Listen to -- https://oltinnisbat.onrender.com`))
       return
     } catch (e) {
       console.error(`DB connect failed (attempt ${i + 1}/${retries})`, e.message)

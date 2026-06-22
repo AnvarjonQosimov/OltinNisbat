@@ -22,7 +22,7 @@ function Features() {
   useEffect(() => {
     let cancelled = false;
     axios
-      .get("http://localhost:8070/api/post/get")
+      .get("https://oltinnisbat.onrender.com/api/post/get")
       .then((res) => {
         if (!cancelled) setCards(res.data || []);
       })
@@ -84,7 +84,7 @@ function Features() {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:8070/api/post/get");
+      const response = await axios.get("https://oltinnisbat.onrender.com/api/post/get");
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -131,7 +131,7 @@ function Features() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8070/api/post/delete/${id}`);
+      await axios.delete(`https://oltinnisbat.onrender.com/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -156,7 +156,7 @@ function Features() {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:8070/api/post/edit/${editId}`,
+        `https://oltinnisbat.onrender.com/api/post/edit/${editId}`,
         editData,
       );
 
@@ -307,7 +307,7 @@ function Features() {
 
                       try {
                         await axios.put(
-                          `http://localhost:8070/api/post/view/${card._id}`,
+                          `https://oltinnisbat.onrender.com/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -336,7 +336,7 @@ function Features() {
 
                       try {
                         await axios.put(
-                          `http://localhost:8070/api/post/view/${card._id}`,
+                          `https://oltinnisbat.onrender.com/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>

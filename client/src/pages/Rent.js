@@ -66,7 +66,7 @@ function Rent(props) {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:8070/api/post/get");
+      const response = await axios.get("https://oltinnisbat.onrender.com/api/post/get");
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -114,7 +114,7 @@ function Rent(props) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8070/api/post/delete/${id}`);
+      await axios.delete(`https://oltinnisbat.onrender.com/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -139,7 +139,7 @@ function Rent(props) {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:8070/api/post/edit/${editId}`,
+        `https://oltinnisbat.onrender.com/api/post/edit/${editId}`,
         editData,
       );
 
@@ -273,7 +273,7 @@ function Rent(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8070/api/post/view/${card._id}`,
+                          `https://oltinnisbat.onrender.com/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -302,7 +302,7 @@ function Rent(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8070/api/post/view/${card._id}`,
+                          `https://oltinnisbat.onrender.com/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
