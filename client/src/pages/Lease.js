@@ -40,6 +40,55 @@ function Lease() {
   const [mediaError, setMediaError] = useState("");
   const [initialError, setInitialError] = useState("");
   const mediaInputRef = React.useRef(null);
+
+  const moveFile = (fromIndex, toIndex) => {
+    const updated = [...files];
+
+    const [removed] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, removed);
+
+    setFiles(updated);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Если это внутреннее перемещение файла внутри списка
+    if (dragIndex !== null) {
+      return;
+    }
+
+    const droppedFiles = Array.from(e.dataTransfer.files);
+
+    console.log("Dropped files:", droppedFiles);
+
+    if (droppedFiles.length === 0) return;
+
+    setFiles((prev) => {
+      const merged = [...prev];
+
+      droppedFiles.forEach((file) => {
+        const exists = merged.some(
+          (existing) =>
+            existing.name === file.name &&
+            existing.size === file.size &&
+            existing.lastModified === file.lastModified,
+        );
+
+        if (!exists) {
+          merged.push(file);
+        }
+      });
+
+      return merged;
+    });
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
   const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -81,11 +130,15 @@ function Lease() {
         formData.append("media", file);
       }
 
-      await axios.post("https://oltinnisbat.onrender.com/api/post/create", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      await axios.post(
+        "https://oltinnisbat.onrender.com/api/post/create",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
       alert("Ma'lumot muvaffaqiyatli qo'shildi!");
       // <Success className="successJs"/>
 
@@ -103,7 +156,7 @@ function Lease() {
       setRooms("");
       // setPrice("");
       // setPhoneNumberInPanel("");
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.error("Xatolik:", error);
       setIsLoading(false);
@@ -157,6 +210,8 @@ function Lease() {
     return () => unsubscribe();
   }, []);
 
+  const [dragIndex, setDragIndex] = useState(null);
+
   return (
     <div className="Lease">
       <div className="Lease">
@@ -171,7 +226,11 @@ function Lease() {
             </div>
           ) : (
             <div>
-              <form onSubmit={(e) => addData(e)}>
+              <form
+                onSubmit={(e) => addData(e)}
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+              >
                 <div className="media-upload-container">
                   <input
                     ref={mediaInputRef}
@@ -179,13 +238,37 @@ function Lease() {
                     type="file"
                     multiple
                     accept="image/*,video/*"
-                    onChange={(e) => setFiles([...files, ...e.target.files])}
+                    onChange={(e) => {
+                      const selectedFiles = Array.from(e.target.files);
+
+                      setFiles((prev) => [...prev, ...selectedFiles]);
+
+                      e.target.value = "";
+                    }}
                     style={{ display: "none" }}
                   />
 
                   <div className="preview-container">
                     {files.map((file, index) => (
-                      <div key={index} className="preview-item">
+                      <div
+                        key={index}
+                        className="preview-item"
+                        draggable
+                        onDragStart={() => setDragIndex(index)}
+                        onDragEnd={() => setDragIndex(null)}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={() => {
+                          if (dragIndex === null || dragIndex === index) return;
+
+                          const updated = [...files];
+
+                          const [moved] = updated.splice(dragIndex, 1);
+                          updated.splice(index, 0, moved);
+
+                          setFiles(updated);
+                          setDragIndex(null);
+                        }}
+                      >
                         {file.type.startsWith("image/") ? (
                           <img
                             src={URL.createObjectURL(file)}
@@ -213,11 +296,17 @@ function Lease() {
                     ))}
                   </div>
 
-                  <label htmlFor="media" className="media-upload-label">
+                  <div
+                    className="media-upload-label"
+                    onClick={() => {
+                      mediaInputRef.current.value = null;
+                      mediaInputRef.current.click();
+                    }}
+                  >
                     {files.length > 0
                       ? `Selected: ${files.length} files`
                       : t("ivideo")}
-                  </label>
+                  </div>
                 </div>
 
                 {/* <label htmlFor="media" className="media-upload-label">
