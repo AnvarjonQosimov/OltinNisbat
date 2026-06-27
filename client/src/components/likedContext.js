@@ -44,33 +44,43 @@ export const LikeProvider = ({ children }) => {
   }, []);
 
   const toggleLike = async (id) => {
-    if (!userId) {
-      alert("Пожалуйста, войдите в аккаунт, чтобы ставить лайки.");
-      return;
-    }
+  if (!userId) {
+    alert("Пожалуйста, войдите в аккаунт, чтобы ставить лайки.");
+    return;
+  }
 
-    const ref = doc(db, "likes", userId);
-    try {
-      if (likedIds.includes(id)) {
-        await updateDoc(ref, { ids: arrayRemove(id) });
-        setLikedIds((prev) => prev.filter((x) => x !== id));
-      } else {
-        await updateDoc(ref, { ids: arrayUnion(id) });
-        setLikedIds((prev) => [...prev, id]);
-      }
-    } catch (err) {
-      if (err.code === "not-found" || err.message.includes("No document to update")) {
-        try {
-          await setDoc(ref, { ids: likedIds.includes(id) ? [] : [id] }, { merge: true });
-          setLikedIds((prev) => (prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]));
-        } catch (e) {
-          console.error("Failed to create likes doc:", e);
-        }
-      } else {
-        console.error("toggleLike error:", err);
-      }
+  const ref = doc(db, "likes", userId);
+
+  const isLiked = likedIds.includes(id);
+
+  // мгновенное изменение интерфейса
+  if (isLiked) {
+    setLikedIds(prev => prev.filter(x => x !== id));
+  } else {
+    setLikedIds(prev => [...prev, id]);
+  }
+
+  try {
+    if (isLiked) {
+      await updateDoc(ref, {
+        ids: arrayRemove(id),
+      });
+    } else {
+      await updateDoc(ref, {
+        ids: arrayUnion(id),
+      });
     }
-  };
+  } catch (err) {
+    console.error(err);
+
+    // откат если запрос не удался
+    if (isLiked) {
+      setLikedIds(prev => [...prev, id]);
+    } else {
+      setLikedIds(prev => prev.filter(x => x !== id));
+    }
+  }
+};
 
   return (
     <LikeContext.Provider value={{ likedIds, toggleLike }}>
